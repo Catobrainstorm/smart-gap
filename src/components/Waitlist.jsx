@@ -182,6 +182,7 @@ const Waitlist = () => {
           style={{ left: dot.x, top: dot.y, width: `${4 + index}px`, height: `${4 + index}px`, backgroundColor: dot.color, transform: 'translate(-50%, -50%)' }} />
       ))}
     </div>
+    // The test of it
   );
 };
 
