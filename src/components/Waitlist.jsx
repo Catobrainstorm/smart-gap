@@ -49,123 +49,113 @@ const Waitlist = () => {
   return (
     <div className="min-h-screen w-full bg-[#050505] relative overflow-x-hidden selection:bg-[#22C55E]/30 font-jakarta">
       
-      {/* 1. BACKGROUND ENGINE */}
+      {/* 1. BACKGROUND ENGINE (RESTORED & IMPROVED) */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute -top-[5%] -left-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-purple-600/10 rounded-full blur-[80px] sm:blur-[140px]" />
-        <div className="absolute -top-[5%] -right-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-indigo-600/10 rounded-full blur-[80px] sm:blur-[140px]" />
-        <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[100%] sm:w-[800px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] sm:blur-[160px]" />
-
-        {/* ARCHITECTURAL LINES */}
-        <div className="absolute top-[35%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/30 via-purple-500/30 to-transparent" />
-        <div className="absolute left-[25%] sm:left-[30%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-indigo-500/30 to-transparent" />
+        <div className="absolute -top-[5%] -left-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-purple-600/10 rounded-full blur-[140px]" />
+        <div className="absolute -top-[5%] -right-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-indigo-600/10 rounded-full blur-[140px]" />
+        
+        {/* ARCHITECTURAL GRID LINES */}
+        <div className="absolute top-[35%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="absolute left-[20%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent" />
+        <div className="absolute right-[20%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       </div>
 
-      {/* 2. FIXED HEADER (THE SHIELD) 
-          FIX: Added bg-[#050505] and z-50 to ensure content disappears behind it */}
-      <header className="fixed top-0 left-0 w-full z-50 pt-10 sm:pt-16 pb-12 flex flex-col items-center bg-[#050505]">
-        <div className="mb-6 scale-90 sm:scale-100">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#0A0A0A] border-[2px] border-white/10 rounded-[28px] flex items-center justify-center rotate-45 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
-            <img src="/assets/logo.webp" alt="Logo" className="-rotate-45 w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+      {/* 2. FIXED HEADER (THE ARCHITECTURAL SHIELD) */}
+      <header className="fixed top-0 left-0 w-full z-50 pt-8 sm:pt-12 flex flex-col items-center bg-[#050505]">
+        <div className="mb-4 scale-75 sm:scale-85 pointer-events-auto">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0A0A0A] border-[1px] border-white/10 rounded-[24px] flex items-center justify-center rotate-45 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
+            <img src="/assets/logo.webp" alt="Logo" className="-rotate-45 w-8 h-8 sm:w-10 sm:h-10 object-contain" />
           </div>
         </div>
-        <h1 className="text-white text-2xl sm:text-4xl md:text-5xl font-light tracking-tight text-center px-6 leading-tight">
+        <h1 className="text-white text-xl sm:text-3xl md:text-4xl font-light tracking-tight text-center px-6 leading-tight pb-6">
           The <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-500 font-medium italic">SmartGap</span> Waitlist Form
         </h1>
-        {/* Subtle bottom fade for the header shield */}
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#050505] translate-y-full pointer-events-none" />
+        
+        {/* RAZOR-THIN DIVIDER */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        
+        {/* SMOOTH FADE TRANSITION */}
+        <div className="absolute bottom-[-30px] left-0 w-full h-10 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />
       </header>
 
       {/* 3. MAIN CONTENT AREA */}
-      <main className="relative z-10 pt-[320px] sm:pt-[400px] pb-24 flex flex-col items-center">
+      <main className="relative z-10 pt-[210px] sm:pt-[270px] pb-24 flex flex-col items-center">
         <AnimatePresence mode="wait">
           {status !== 'success' ? (
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-xl px-4">
-              <form onSubmit={handleSubmit} className="space-y-6 bg-white/[0.03] border border-white/10 p-6 sm:p-12 rounded-[40px] backdrop-blur-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-xl px-4">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white/[0.02] border border-white/10 p-6 sm:p-10 rounded-[40px] backdrop-blur-[30px] shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                 
+                {/* Inputs Row 1 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">Full Name</label>
+                  <div className="space-y-2">
+                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Full Name</label>
                     <input required type="text" placeholder="Your name" value={formData.fullName}
                       onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">Email Address</label>
+                  <div className="space-y-2">
+                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Email Address</label>
                     <input required type="email" placeholder="email@example.com" value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
                 </div>
 
+                {/* Inputs Row 2 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">WhatsApp Number</label>
+                  <div className="space-y-2">
+                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">WhatsApp Number</label>
                     <input required type="tel" placeholder="+234..." value={formData.whatsapp}
                       onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">Age</label>
+                  <div className="space-y-2">
+                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Age</label>
                     <input required type="number" placeholder="20" value={formData.age}
                       onChange={(e) => setFormData({...formData, age: e.target.value})}
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">Location</label>
+                {/* Location */}
+                <div className="space-y-2">
+                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Location</label>
                   <input required type="text" placeholder="Lagos, Nigeria" value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                    className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                 </div>
 
+                {/* Educational Status */}
                 <div className="space-y-4 pt-4 border-t border-white/5">
                   <label className="text-white/60 text-[11px] font-medium uppercase tracking-[0.15em]">Educational Status</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {['High School Student', 'Gap Year (Taking a break)', 'Higher Institution', 'Graduate'].map((status) => (
-                      <label key={status} className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${formData.educationalStatus === status ? 'bg-purple-500/10 border-purple-500' : 'bg-white/5 border-white/5 hover:border-white/15'}`}>
+                      <label key={status} className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${formData.educationalStatus === status ? 'bg-purple-500/10 border-purple-500/50' : 'bg-white/5 border-white/0 hover:bg-white/10'}`}>
                         <input type="radio" name="edu" className="hidden" onChange={() => setFormData({...formData, educationalStatus: status})} />
                         <div className={`w-3.5 h-3.5 rounded-full border ${formData.educationalStatus === status ? 'bg-purple-500 border-purple-500' : 'border-white/20'}`} />
                         <span className="text-[11px] text-white/80">{status}</span>
                       </label>
                     ))}
                   </div>
-
-                  <AnimatePresence>
-                    {shouldShowSchoolInput && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="pt-2 overflow-hidden">
-                        <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">Current/Previous Institution</label>
-                        <input required type="text" placeholder="Institution name..." value={formData.schoolName}
-                          onChange={(e) => setFormData({...formData, schoolName: e.target.value})}
-                          className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 mt-2 transition-all" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1">How did you hear about us?</label>
-                  <input type="text" placeholder="Twitter, Instagram, Friend..." value={formData.referral}
+                {/* Referral (THE NEW QUESTION) */}
+                <div className="space-y-2">
+                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">How did you hear about us?</label>
+                  <input required type="text" placeholder="Twitter, Instagram, a friend..." value={formData.referral}
                     onChange={(e) => setFormData({...formData, referral: e.target.value})}
-                    className="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-5 text-white focus:outline-none focus:ring-1 focus:ring-purple-500 transition-all" />
+                    className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                 </div>
 
-                {/* UPDATED BUTTON TEXT */}
-                <button disabled={status === 'loading'} type="submit" className="w-full bg-white text-black font-bold py-5 rounded-2xl hover:bg-gray-200 active:scale-[0.98] transition-all mt-4 text-xs uppercase tracking-[0.2em]">
-                  {status === 'loading' ? 'Processing...' : 'Secure Your Spot'}
+                <button disabled={status === 'loading'} type="submit" className="w-full bg-white text-black font-extrabold py-5 rounded-2xl hover:bg-gray-200 active:scale-[0.98] transition-all mt-4 text-xs uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
+                  {status === 'loading' ? 'Verifying...' : 'Secure Your Spot'}
                 </button>
               </form>
             </motion.div>
           ) : (
-            <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-lg bg-[#0F0F0F] border border-white/10 rounded-[48px] p-12 sm:p-20 flex flex-col items-center shadow-3xl mx-4 backdrop-blur-3xl">
-              <div className="w-20 h-20 bg-[#22C55E] rounded-full flex items-center justify-center mb-8 shadow-[0_0_60px_rgba(34,197,94,0.3)]">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <h2 className="text-white text-3xl sm:text-4xl font-medium text-center mb-4 leading-tight">Access Granted.</h2>
-              <p className="text-white/40 text-center mb-10 text-sm">You are now on the elite list. Stay tuned.</p>
-              <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
-                <span className="text-white/90 text-sm font-jakarta">{submittedEmail}</span>
-              </div>
+            <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-lg bg-[#0F0F0F] border border-white/10 rounded-[48px] p-12 text-center shadow-3xl">
+              <h2 className="text-white text-3xl font-medium mb-4 italic">Welcome.</h2>
+              <p className="text-white/40 text-sm">You've successfully secured your spot.</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -179,7 +169,7 @@ const Waitlist = () => {
 
       {/* CURSOR DOTS */}
       {dots.map((dot, index) => (
-        <motion.div key={dot.id} className="fixed pointer-events-none z-[60] rounded-full blur-[1px]"
+        <motion.div key={dot.id} className="fixed pointer-events-none z-[100] rounded-full blur-[1px]"
           style={{ left: dot.x, top: dot.y, width: `${4 + index}px`, height: `${4 + index}px`, backgroundColor: dot.color, transform: 'translate(-50%, -50%)' }} />
       ))}
     </div>
