@@ -49,7 +49,7 @@ const Waitlist = () => {
   return (
     <div className="min-h-screen w-full bg-[#050505] relative overflow-x-hidden selection:bg-[#22C55E]/30 font-jakarta">
       
-      {/* 1. BACKGROUND ENGINE (RESTORED & IMPROVED) */}
+      {/* 1. BACKGROUND ENGINE */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute -top-[5%] -left-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-purple-600/10 rounded-full blur-[140px]" />
         <div className="absolute -top-[5%] -right-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-indigo-600/10 rounded-full blur-[140px]" />
@@ -60,32 +60,30 @@ const Waitlist = () => {
         <div className="absolute right-[20%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       </div>
 
-      {/* 2. FIXED HEADER (THE ARCHITECTURAL SHIELD) */}
-      <header className="fixed top-0 left-0 w-full z-50 pt-8 sm:pt-12 flex flex-col items-center bg-[#050505]">
-        <div className="mb-4 scale-75 sm:scale-85 pointer-events-auto">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0A0A0A] border-[1px] border-white/10 rounded-[24px] flex items-center justify-center rotate-45 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
-            <img src="/assets/logo.webp" alt="Logo" className="-rotate-45 w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+      {/* 2. FIXED HEADER */}
+      <header className="fixed top-0 left-0 w-full z-50 pt-10 sm:pt-14 flex flex-col items-center bg-[#050505]">
+        
+        <div className="mb-8 scale-[1.2] sm:scale-[1.4] pointer-events-auto transition-transform duration-500 hover:scale-[1.3] sm:hover:scale-[1.5]">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 bg-[#0A0A0A] border-[1px] border-white/10 rounded-[30px] flex items-center justify-center rotate-45 shadow-[0_0_80px_rgba(255,255,255,0.08)]">
+            <img src="/assets/logo.webp" alt="Logo" className="-rotate-45 w-14 h-14 sm:w-16 sm:h-16 object-contain" />
           </div>
         </div>
-        <h1 className="text-white text-xl sm:text-3xl md:text-4xl font-light tracking-tight text-center px-6 leading-tight pb-6">
+
+        <h1 className="text-white text-2xl sm:text-4xl md:text-5xl font-light tracking-tight text-center px-6 leading-tight pb-8">
           The <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-indigo-500 font-medium italic">SmartGap</span> Waitlist Form
         </h1>
         
-        {/* RAZOR-THIN DIVIDER */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        
-        {/* SMOOTH FADE TRANSITION */}
-        <div className="absolute bottom-[-30px] left-0 w-full h-10 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />
+        <div className="absolute bottom-[-40px] left-0 w-full h-12 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />
       </header>
 
       {/* 3. MAIN CONTENT AREA */}
-      <main className="relative z-10 pt-[210px] sm:pt-[270px] pb-24 flex flex-col items-center">
+      <main className="relative z-10 pt-[280px] sm:pt-[340px] pb-24 flex flex-col items-center">
         <AnimatePresence mode="wait">
           {status !== 'success' ? (
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-xl px-4">
+            <motion.div key="form-container" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-xl px-4">
               <form onSubmit={handleSubmit} className="space-y-6 bg-white/[0.02] border border-white/10 p-6 sm:p-10 rounded-[40px] backdrop-blur-[30px] shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
                 
-                {/* Inputs Row 1 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Full Name</label>
@@ -101,7 +99,6 @@ const Waitlist = () => {
                   </div>
                 </div>
 
-                {/* Inputs Row 2 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">WhatsApp Number</label>
@@ -117,15 +114,6 @@ const Waitlist = () => {
                   </div>
                 </div>
 
-                {/* Location */}
-                <div className="space-y-2">
-                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Location</label>
-                  <input required type="text" placeholder="Lagos, Nigeria" value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
-                </div>
-
-                {/* Educational Status */}
                 <div className="space-y-4 pt-4 border-t border-white/5">
                   <label className="text-white/60 text-[11px] font-medium uppercase tracking-[0.15em]">Educational Status</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -139,7 +127,17 @@ const Waitlist = () => {
                   </div>
                 </div>
 
-                {/* Referral (THE NEW QUESTION) */}
+                <AnimatePresence>
+                  {shouldShowSchoolInput && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="space-y-2 pt-2 overflow-hidden">
+                      <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Which school do you attend?</label>
+                      <input required type="text" placeholder="Name of institution..." value={formData.schoolName}
+                        onChange={(e) => setFormData({...formData, schoolName: e.target.value})}
+                        className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className="space-y-2">
                   <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">How did you hear about us?</label>
                   <input required type="text" placeholder="Twitter, Instagram, a friend..." value={formData.referral}
@@ -153,21 +151,20 @@ const Waitlist = () => {
               </form>
             </motion.div>
           ) : (
-            <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-lg bg-[#0F0F0F] border border-white/10 rounded-[48px] p-12 text-center shadow-3xl">
+            <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-lg bg-[#0F0F0F] border border-white/10 rounded-[48px] p-12 text-center shadow-3xl mx-4">
               <h2 className="text-white text-3xl font-medium mb-4 italic">Welcome.</h2>
               <p className="text-white/40 text-sm">You've successfully secured your spot.</p>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <footer className="mt-20 pb-10 text-center z-10">
-          <p className="text-white/20 text-[11px] font-jakarta tracking-widest uppercase italic">
+        <footer className="mt-20 pb-10 text-center z-10 w-full">
+          <p className="text-white/20 text-[11px] font-jakarta tracking-widest uppercase italic text-center">
             © 2026 All Rights Reserved. Smartan House.
           </p>
         </footer>
       </main>
 
-      {/* CURSOR DOTS */}
       {dots.map((dot, index) => (
         <motion.div key={dot.id} className="fixed pointer-events-none z-[100] rounded-full blur-[1px]"
           style={{ left: dot.x, top: dot.y, width: `${4 + index}px`, height: `${4 + index}px`, backgroundColor: dot.color, transform: 'translate(-50%, -50%)' }} />
