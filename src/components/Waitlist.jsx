@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Waitlist = () => {
   const [formData, setFormData] = useState({ 
     fullName: '', email: '', whatsapp: '', location: '',
-    educationalStatus: '', schoolName: '', age: '', referral: ''
+    educationalStatus: '', schoolName: '', dateOfBirth: '', referral: ''
   });
   const [status, setStatus] = useState('idle');
   const [submittedEmail, setSubmittedEmail] = useState('');
@@ -54,7 +54,6 @@ const Waitlist = () => {
         <div className="absolute -top-[5%] -left-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-purple-600/10 rounded-full blur-[140px]" />
         <div className="absolute -top-[5%] -right-[10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-indigo-600/10 rounded-full blur-[140px]" />
         
-        {/* ARCHITECTURAL GRID LINES */}
         <div className="absolute top-[35%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         <div className="absolute left-[20%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent" />
         <div className="absolute right-[20%] top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent" />
@@ -107,11 +106,18 @@ const Waitlist = () => {
                       className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Age</label>
-                    <input required type="number" placeholder="20" value={formData.age}
-                      onChange={(e) => setFormData({...formData, age: e.target.value})}
-                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
+                    <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Date of Birth</label>
+                    <input required type="date" value={formData.dateOfBirth}
+                      onChange={(e) => setFormData({...formData, dateOfBirth: e.target.value})}
+                      className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all [color-scheme:dark]" />
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Location</label>
+                  <input required type="text" placeholder="Lagos, Nigeria" value={formData.location}
+                    onChange={(e) => setFormData({...formData, location: e.target.value})}
+                    className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                 </div>
 
                 <div className="space-y-4 pt-4 border-t border-white/5">
