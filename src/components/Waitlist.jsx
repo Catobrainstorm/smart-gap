@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Waitlist = () => {
   const [formData, setFormData] = useState({ 
-    fullName: '', email: '', whatsapp: '', location: '',
+    fullName: '', email: '', whatsapp: '',
     educationalStatus: '', schoolName: '', dateOfBirth: '', referral: '',
     gender: '', disabilityStatus: '', country: '', state: '', localGovernment: ''
   });
@@ -213,13 +213,6 @@ const Waitlist = () => {
                       onChange={(e) => setFormData({...formData, localGovernment: e.target.value})}
                       className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                   </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-white/40 text-[10px] uppercase tracking-widest ml-1 font-bold">Location</label>
-                  <input required type="text" placeholder="Lagos, Nigeria" value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    className="w-full bg-white/[0.04] border border-white/5 rounded-2xl py-4 px-5 text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-white/10" />
                 </div>
 
                 <div className="space-y-4 pt-4 border-t border-white/5">
