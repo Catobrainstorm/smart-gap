@@ -2,90 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @theme {
-  /* Custom font family */
   --font-sentinel: "Sentinel", serif;
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
-
-  /* Custom colors for the SmartGap brand */
   --color-smart-green: #22C55E;
-  --color-smart-dark: #0F172A;
-  --color-smart-bg: #F8FAFC;
+  --color-smart-dark: #050505;
 }
 
 @layer base {
-  /* Book (Normal) */
   @font-face {
     font-family: 'Sentinel';
     src: url('./assets/fonts/Sentinel-Book-iF6618f54f8ce4b.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400; font-style: normal; font-display: swap;
   }
-  
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Book-Italic-iF6618f54f6ed4b.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  /* Medium (Weight 500) */
   @font-face {
     font-family: 'Sentinel';
     src: url('./assets/fonts/Sentinel-Medium-iF6618f54f879d1.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  /* Semibold (Weight 600) */
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Semibold-iF6618f54f828a4.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  /* Bold (Weight 700) */
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Bold-iF6618f54f7d67f.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  /* Black (Weight 900) */
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Black-iF6618f54f7881c.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 500; font-style: normal; font-display: swap;
   }
 
   body {
-    /* Jakarta is the default for UI/Text */
-    @apply font-jakarta antialiased text-smart-dark bg-white overflow-x-hidden m-0 p-0;
+    @apply font-jakarta antialiased bg-[#050505] text-white m-0 p-0 overflow-x-hidden;
   }
 
-  /* Force Sentinel for headings so Jakarta doesn't take over */
   h1, h2, h3 {
     font-family: var(--font-sentinel) !important;
   }
 
   html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    scroll-behavior: smooth;
+    margin: 0; padding: 0; scroll-behavior: smooth;
   }
-}
-
-/* Custom GSAP Utility Class */
-.gsap-reveal {
-  opacity: 0;
-  transform: translateY(30px);
 }
