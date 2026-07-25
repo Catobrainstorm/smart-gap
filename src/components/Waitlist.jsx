@@ -110,8 +110,8 @@ const Waitlist = () => {
           <div className="relative z-30 max-w-4xl space-y-8">
             {/* RESTORED FORMER TEXT */}
             <h1 className="text-white text-[38px] md:text-[60px] lg:text-[82px] font-medium leading-[1.1] tracking-tight">
-              360° Street to Suite <br />
-              Transformation Package
+              The SmartGap <br />
+              360° Street to Suite Transformation package
             </h1>
             
             <div className="space-y-8 max-w-2xl">
