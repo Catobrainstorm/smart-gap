@@ -7,15 +7,18 @@ const Waitlist = () => {
   const [formData, setFormData] = useState({ 
     fullName: '', email: '', whatsapp: '',
     educationalStatus: '', schoolName: '', dateOfBirth: '', referral: '',
-    gender: '', disabilityStatus: '', country: '', state: '', localGovernment: ''
+    sex: '', disabilityStatus: '', country: '', state: '', localGovernment: '',
+    careerInterest: ''
   });
   const [status, setStatus] = useState('idle');
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [dots, setDots] = useState([]);
   const [expandedDisability, setExpandedDisability] = useState(null);
+  const [careerDropdownOpen, setCareerDropdownOpen] = useState(false);
   
   const formSectionRef = useRef(null);
   const timerRef = useRef(null);
+  const careerDropdownRef = useRef(null);
 
   const scrollToForm = () => {
     formSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,6 +36,16 @@ const Waitlist = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (careerDropdownRef.current && !careerDropdownRef.current.contains(e.target)) {
+        setCareerDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -57,6 +70,29 @@ const Waitlist = () => {
     { label: 'Divergent Learners', examples: ['ADHD', 'Autism Spectrum', 'Dyslexia', 'etc.'] },
     { label: 'Hearing/Speech Impairment', examples: null },
     { label: 'None', examples: null },
+  ];
+
+  const careerInterests = [
+    'Artificial Intelligence & Machine Learning',
+    'Cybersecurity & Digital Trust',
+    'Software Engineering & Product Development',
+    'Data Science & Analytics',
+    'Fintech & Digital Payments',
+    'Cloud Computing & DevOps',
+    'Renewable Energy & Clean Tech',
+    'Agritech & Sustainable Agriculture',
+    'Healthcare & Biotechnology',
+    'Creative Economy & Digital Content',
+    'UI/UX & Product Design',
+    'Digital Marketing & Growth',
+    'E-commerce & Digital Trade',
+    'Logistics & Supply Chain Management',
+    'Robotics & Automation',
+    'EdTech & Learning Innovation',
+    'Climate Change & Sustainability Consulting',
+    'Public Policy, Governance & Civic Tech',
+    'Entrepreneurship & Venture Building',
+    'Skilled Trades & Vocational Technology',
   ];
 
   return (
@@ -161,14 +197,14 @@ const Waitlist = () => {
                     </div>
                   </div>
 
-                  {/* Identity */}
+                  {/* Sex */}
                   <div className="space-y-4 pt-4 border-t border-white/5">
-                    <label className="text-white/60 text-[11px] uppercase tracking-widest font-bold">Gender</label>
+                    <label className="text-white/60 text-[11px] uppercase tracking-widest font-bold">Sex</label>
                     <div className="grid grid-cols-2 gap-3">
                       {['Male', 'Female'].map((option) => (
-                        <label key={option} className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${formData.gender === option ? 'bg-purple-500/10 border-purple-500/50' : 'bg-white/5 border-white/0 hover:bg-white/10'}`}>
-                          <input type="radio" name="gender" className="hidden" onChange={() => setFormData({...formData, gender: option})} />
-                          <div className={`w-3.5 h-3.5 rounded-full border ${formData.gender === option ? 'bg-purple-500 border-purple-500' : 'border-white/20'}`} />
+                        <label key={option} className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${formData.sex === option ? 'bg-purple-500/10 border-purple-500/50' : 'bg-white/5 border-white/0 hover:bg-white/10'}`}>
+                          <input type="radio" name="sex" className="hidden" onChange={() => setFormData({...formData, sex: option})} />
+                          <div className={`w-3.5 h-3.5 rounded-full border ${formData.sex === option ? 'bg-purple-500 border-purple-500' : 'border-white/20'}`} />
                           <span className="text-[11px] text-white/80">{option}</span>
                         </label>
                       ))}
@@ -207,10 +243,11 @@ const Waitlist = () => {
 
                   {/* Residence */}
                   <div className="space-y-4 border-t border-white/5 pt-4">
-                    <input required type="text" placeholder="Country" value={formData.country} onChange={(e) => setFormData({...formData, country: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
+                    <label className="text-white/60 text-[11px] uppercase tracking-widest font-bold">Residence (Current, Not Origin)</label>
+                    <input required type="text" placeholder="Country of Residence" value={formData.country} onChange={(e) => setFormData({...formData, country: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
                     <div className="grid grid-cols-2 gap-5">
-                      <input required type="text" placeholder="State" value={formData.state} onChange={(e) => setFormData({...formData, state: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
-                      <input required type="text" placeholder="LGA" value={formData.localGovernment} onChange={(e) => setFormData({...formData, localGovernment: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
+                      <input required type="text" placeholder="State of Residence" value={formData.state} onChange={(e) => setFormData({...formData, state: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
+                      <input required type="text" placeholder="LGA of Residence" value={formData.localGovernment} onChange={(e) => setFormData({...formData, localGovernment: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />
                     </div>
                   </div>
 
@@ -235,6 +272,59 @@ const Waitlist = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
+
+                  {/* 21st Century Career Interest */}
+                  <div ref={careerDropdownRef} className="space-y-2 pt-4 border-t border-white/5 relative">
+                    <label className="text-white/60 text-[11px] uppercase tracking-widest font-bold">21st Century Career Interest</label>
+
+                    <button
+                      type="button"
+                      onClick={() => setCareerDropdownOpen((prev) => !prev)}
+                      className={`w-full flex items-center justify-between gap-3 bg-white/[0.03] border rounded-2xl py-4 px-5 text-left outline-none transition-all ${careerDropdownOpen ? 'border-purple-500/50' : 'border-white/5'}`}
+                    >
+                      <span className={`text-[13px] ${formData.careerInterest ? 'text-white' : 'text-white/30'}`}>
+                        {formData.careerInterest || 'Select a career interest'}
+                      </span>
+                      <span className={`text-white/30 text-[10px] transition-transform duration-200 ${careerDropdownOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+
+                    {/* Hidden input enforces native required validation on submit */}
+                    <input
+                      type="text"
+                      required
+                      value={formData.careerInterest}
+                      readOnly
+                      tabIndex={-1}
+                      aria-hidden="true"
+                      className="absolute opacity-0 w-0 h-0 pointer-events-none"
+                    />
+
+                    <AnimatePresence>
+                      {careerDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute z-40 mt-2 w-full max-h-64 overflow-y-auto rounded-2xl border border-white/10 bg-[#0F0F0F] shadow-2xl divide-y divide-white/5"
+                        >
+                          {careerInterests.map((interest) => (
+                            <button
+                              key={interest}
+                              type="button"
+                              onClick={() => {
+                                setFormData({ ...formData, careerInterest: interest });
+                                setCareerDropdownOpen(false);
+                              }}
+                              className={`w-full text-left px-5 py-3 text-[12px] transition-all ${formData.careerInterest === interest ? 'bg-purple-500/10 text-white' : 'text-white/60 hover:bg-white/5 hover:text-white'}`}
+                            >
+                              {interest}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
 
                   <div className="space-y-2">
                     <input required type="text" placeholder="How did you hear about us?" value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl py-4 px-5 text-white outline-none" />

@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* ─── Base color-mode tokens (light baseline) ─── */
+:root,
+[data-color-mode="light"] {
+  --background: #f5f5f7;
+  --foreground: #1d1d1f;
+  --foreground-muted: #6e6e73;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-elevated: rgba(255, 255, 255, 0.88);
+  --border: rgba(255, 255, 255, 0.65);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-muted: rgba(0, 113, 227, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --orb-1: rgba(0, 113, 227, 0.18);
+  --orb-2: rgba(175, 82, 222, 0.14);
+  --orb-3: rgba(48, 209, 88, 0.12);
+  --input-bg: rgba(255, 255, 255, 0.55);
+  --ring: rgba(0, 113, 227, 0.45);
+}
+
+/* ─── Dark color-mode override ─── */
+[data-color-mode="dark"] {
+  --background: #000000;
+  --foreground: #f5f5f7;
+  --foreground-muted: #86868b;
+  --surface: rgba(28, 28, 30, 0.72);
+  --surface-elevated: rgba(44, 44, 46, 0.82);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --accent-muted: rgba(10, 132, 255, 0.18);
+  --glass-bg: rgba(22, 22, 24, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  --orb-1: rgba(10, 132, 255, 0.22);
+  --orb-2: rgba(191, 90, 242, 0.18);
+  --orb-3: rgba(48, 209, 88, 0.14);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --ring: rgba(10, 132, 255, 0.55);
+}
+
+/* ─── Layout theme: classic (default Apple-inspired) ─── */
+[data-layout-theme="classic"] {
+  --theme-radius: 1.25rem;
+  --theme-radius-sm: 0.75rem;
+  --theme-font-weight-heading: 600;
+  --theme-gradient: linear-gradient(
+    135deg,
+    var(--orb-1) 0%,
+    var(--orb-2) 50%,
+    var(--orb-3) 100%
+  );
+}
+
+/* ─── Layout theme: cyber ─── */
+[data-layout-theme="cyber"] {
+  --theme-radius: 0.375rem;
+  --theme-radius-sm: 0.25rem;
+  --theme-font-weight-heading: 700;
+  --accent: #00f0ff;
+  --accent-hover: #5ffbff;
+  --accent-muted: rgba(0, 240, 255, 0.14);
+  --ring: rgba(0, 240, 255, 0.5);
+  --orb-1: rgba(0, 240, 255, 0.2);
+  --orb-2: rgba(255, 0, 128, 0.16);
+  --orb-3: rgba(124, 58, 237, 0.18);
+  --theme-gradient: linear-gradient(
+    160deg,
+    var(--orb-1) 0%,
+    var(--orb-2) 45%,
+    var(--orb-3) 100%
+  );
+}
+
+[data-color-mode="light"][data-layout-theme="cyber"] {
+  --accent: #0891b2;
+  --accent-hover: #0e7490;
+  --accent-muted: rgba(8, 145, 178, 0.12);
+  --ring: rgba(8, 145, 178, 0.45);
+}
+
+/* ─── Layout theme: minimalist ─── */
+[data-layout-theme="minimalist"] {
+  --theme-radius: 0.5rem;
+  --theme-radius-sm: 0.375rem;
+  --theme-font-weight-heading: 500;
+  --orb-1: rgba(120, 120, 128, 0.08);
+  --orb-2: rgba(120, 120, 128, 0.06);
+  --orb-3: rgba(120, 120, 128, 0.04);
+  --theme-gradient: linear-gradient(
+    180deg,
+    var(--orb-1) 0%,
+    transparent 100%
+  );
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-input-bg: var(--input-bg);
+  --color-ring: var(--ring);
+  --radius-theme: var(--theme-radius);
+  --radius-theme-sm: var(--theme-radius-sm);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ─── Frosted glass utility ─── */
+@utility apple-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+@utility apple-glass-elevated {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+html[data-color-mode="light"] {
+  color-scheme: light;
+}
+
+html[data-color-mode="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100dvh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* Ambient mesh background used on auth & dashboard shells */
+.theme-mesh-bg {
+  background-color: var(--background);
+  background-image: var(--theme-gradient);
+}
+
+.theme-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.85;
+}
