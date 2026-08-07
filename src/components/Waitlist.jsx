@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { db } from '../firebase'; 
+import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Waitlist = () => {
-  const [formData, setFormData] = useState({ 
+  const [formData, setFormData] = useState({
     fullName: '', email: '', whatsapp: '',
     educationalStatus: '', schoolName: '', dateOfBirth: '', referral: '',
     sex: '', disabilityStatus: '', country: '', state: '', localGovernment: '',
@@ -15,7 +15,7 @@ const Waitlist = () => {
   const [dots, setDots] = useState([]);
   const [expandedDisability, setExpandedDisability] = useState(null);
   const [careerDropdownOpen, setCareerDropdownOpen] = useState(false);
-  
+
   const formSectionRef = useRef(null);
   const timerRef = useRef(null);
   const careerDropdownRef = useRef(null);
@@ -32,7 +32,7 @@ const Waitlist = () => {
       };
       setDots((prev) => [...prev.slice(-8), newDot]);
       clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => setDots([]), 100); 
+      timerRef.current = setTimeout(() => setDots([]), 100);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -97,11 +97,11 @@ const Waitlist = () => {
 
   return (
     <div className="w-full bg-[#050505] selection:bg-purple-500/30">
-      
+
       {/* 1. HERO CARD SECTION */}
       <section className="px-4 md:px-8 lg:px-12 pt-10 md:pt-20 pb-20 relative overflow-x-clip">
         <div className="max-w-[1400px] mx-auto bg-[#0D0D0D] border border-white/[0.05] rounded-[40px] md:rounded-[60px] relative overflow-hidden md:overflow-visible p-8 md:p-16 lg:p-24 min-h-[700px] md:min-h-[850px] flex flex-col justify-center md:justify-start z-20 shadow-2xl">
-          
+
           {/* INCREASED LOGO SIZE */}
           <div className="mb-10 md:mb-14">
             <img src="/assets/logo.webp" alt="Logo" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
@@ -113,12 +113,10 @@ const Waitlist = () => {
               The SmartGap <br />
               360° Street to Suite Transformation package
             </h1>
-            
+
             <div className="space-y-8 max-w-2xl">
               <p className="font-jakarta text-white/40 text-[16px] lg:text-[18px] leading-relaxed">
-                Most people are overwhelmed, distracted, and guessing their way through life. SmartGap fixes that. 
-                You move through structured modules that build how you think, how you work, and how you make decisions. 
-                SmartGap is not a course, it's a personalized, gamified platform that gives you clarity, direction, and the tools to build a life on purpose.
+                SmartGap is a 4-week gamified gap year programme for GenZs, college freshmen, and young adults (15–25), built to equip them with the clarity, skills, and worldview to become stewards of sovereign wealth and active players in shaping global economic futures, through structured modules, AI-driven discovery tools, and immersive cinematic learning presented by SmartanDad, covering cognitive, strategic, digital, ethical and self-leadership dimensions aligned with the Smartan Builder's Framework.
               </p>
 
               {/* ADDED THE LINE YOU LIKED */}
@@ -132,11 +130,11 @@ const Waitlist = () => {
 
             {/* BUTTONS - Z-Index boosted to stay above illustration */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6 relative z-50">
-              <a href="https://impact.smartanhouse.org/" target="_blank" rel="noreferrer" 
+              <a href="https://impact.smartanhouse.org/" target="_blank" rel="noreferrer"
                  className="px-10 py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-gray-100 transition-all text-center uppercase tracking-widest text-[10px]">
                 Pay to Impact
               </a>
-              <button onClick={scrollToForm} 
+              <button onClick={scrollToForm}
                       className="px-10 py-5 bg-white/5 border border-white/10 text-white font-extrabold rounded-2xl hover:bg-white/10 transition-all uppercase tracking-widest text-[10px]">
                 Join Waitlist
               </button>
@@ -144,17 +142,17 @@ const Waitlist = () => {
           </div>
 
           {/* ILLUSTRATION - MOBILE FIX (Background, Low Opacity) */}
-          <div className="absolute 
-              bottom-[-50px] right-[-30px] opacity-10 
-              md:bottom-[-150px] md:right-[5%] md:opacity-100 
-              lg:bottom-[-200px] lg:right-[-100px] 
+          <div className="absolute
+              bottom-[-50px] right-[-30px] opacity-10
+              md:bottom-[-150px] md:right-[5%] md:opacity-100
+              lg:bottom-[-200px] lg:right-[-100px]
               pointer-events-none z-10 transition-all duration-700">
-            <motion.img 
+            <motion.img
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.5, ease: "power4.out" }}
-              src="/assets/illustrate-1.webp" 
-              alt="Illustration" 
+              src="/assets/illustrate-1.webp"
+              alt="Illustration"
               className="w-[320px] sm:w-[500px] lg:w-[850px] h-auto drop-shadow-[0_0_120px_rgba(0,0,0,0.5)]"
             />
           </div>
@@ -171,7 +169,7 @@ const Waitlist = () => {
                   <h2 className="text-white text-2xl font-light tracking-[0.2em] uppercase">Join the Waitlist</h2>
                   <div className="w-10 h-[1px] bg-purple-500/50 mx-auto mt-4" />
                 </div>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6 bg-white/[0.02] border border-white/10 p-7 md:p-12 rounded-[45px] backdrop-blur-[40px] shadow-3xl">
                   {/* Row 1 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
