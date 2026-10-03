@@ -1,138 +1,174 @@
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { APPLE_EASE, TACTILE_EASE } from "../lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const pillars = [
+  {
+    num: "01",
+    tag: "CLARITY",
+    title: "Intentional",
+    desc: "Deconstruct outdated schooling models to build an intelligent, purpose-driven life framework.",
+  },
+  {
+    num: "02",
+    tag: "ENGAGEMENT",
+    title: "Fun",
+    desc: "Gamified levels, cognitive streaks, and achievement badges that make personal growth addictive.",
+  },
+  {
+    num: "03",
+    tag: "LEVERAGE",
+    title: "Effective",
+    desc: "AI-augmented mastery, real-world portfolio artifacts, and high-stakes market readiness.",
+  },
+];
+
 const Philosophy = () => {
-  const container = useRef();
-  const pencilRef = useRef();
-  const darkCardRef = useRef();
+  const containerRef = useRef(null);
+  const starRef = useRef(null);
+  const guideRef = useRef(null);
+  const [activePillar, setActivePillar] = useState(0);
 
-  useGSAP(() => {
-    // 1. Heading Reveal
-    gsap.from(".philosophy-title", {
-      y: 60,
-      opacity: 0,
-      duration: 1.2,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: ".philosophy-title",
-        start: "top 85%",
-      }
-    });
-
-    // 2. Dark Card Reveal
-    gsap.fromTo(darkCardRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "power4.out",
+  useGSAP(
+    () => {
+      // 1. FLOATING 3D PARALLAX TOKENS
+      gsap.to(starRef.current, {
+        y: -140,
+        rotate: 45,
+        ease: "none",
         scrollTrigger: {
-          trigger: darkCardRef.current,
-          start: "top bottom-=100",
-        }
-      }
-    );
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
 
-    // 3. ILLUSTRATION PARALLAX
-    gsap.to(pencilRef.current, {
-      y: -150, 
-      rotate: 4,
-      scrollTrigger: {
-        trigger: darkCardRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-      }
-    });
+      gsap.to(guideRef.current, {
+        y: 120,
+        rotate: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.4,
+        },
+      });
 
-  }, { scope: container });
+      // 2. STAGGERED REVEAL
+      gsap.from(".philo-reveal", {
+        y: 60,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1,
+        ease: APPLE_EASE,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+        },
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <section ref={container} className="w-full bg-white overflow-visible pb-20 lg:pb-32">
-      
-      {/* --- SECTION 1: Static Dash Area --- */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 lg:pt-32 relative z-30">
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
-          <div className="lg:pl-10">
-            <h2 className="philosophy-title font-sentinel text-[48px] lg:text-[72px] text-[#000000] font-medium leading-[1.1] tracking-tight">
-              Intentional, <br />
-              Fun, & Effective
-            </h2>
-            <p className="font-jakarta text-slate-500 text-[16px] mt-6 max-w-sm leading-relaxed">
-              The gamified platform that gives you clarity, skills, and direction built 
-              for young Nigerians ready to become someone they're proud of.
-            </p>
-          </div>
+    <section
+      id="philosophy"
+      ref={containerRef}
+      className="relative w-full min-h-screen bg-[#050505] text-white py-28 sm:py-36 px-6 sm:px-12 flex flex-col justify-center items-center overflow-hidden border-t border-white/5 scroll-mt-10 select-none"
+    >
+      {/* 3D FLOATING PARALLAX ASSETS */}
+      <img
+        ref={starRef}
+        src="/assets/hero-star.webp"
+        alt="Star"
+        className="absolute top-16 left-[6%] w-20 sm:w-28 h-auto opacity-70 pointer-events-none drop-shadow-[0_0_30px_rgba(251,146,60,0.3)]"
+      />
+      <img
+        ref={guideRef}
+        src="/assets/hero-guide.webp"
+        alt="Guide"
+        className="absolute bottom-16 right-[6%] w-24 sm:w-36 h-auto opacity-60 pointer-events-none drop-shadow-[0_0_40px_rgba(251,146,60,0.2)]"
+      />
 
-          <div className="relative mt-12 lg:mt-0 lg:translate-y-64 pointer-events-none">
-            <img 
-              src="/assets/dash.webp" 
-              alt="Dashboard" 
-              className="w-full h-auto drop-shadow-[0_40px_100px_rgba(0,0,0,0.12)] lg:scale-125 origin-top-right"
-            />
-          </div>
+      <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center">
+        
+        {/* MONOSPACE BADGE */}
+        <div className="philo-reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
+          <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.9)]" />
+          <span className="font-mono text-xs text-orange-400 uppercase tracking-[0.3em] font-bold">
+            The Mindset Continuum
+          </span>
         </div>
-      </div>
 
-      {/* --- SECTION 2: Dark Card --- */}
-      <div className="w-full px-4 lg:px-24 mt-40 lg:mt-56">
-        <div 
-          ref={darkCardRef}
-          /* items-start used to pull content to the top */
-          className="max-w-[2100px] mx-auto rounded-[30px] relative overflow-hidden md:overflow-visible min-h-[600px] lg:min-h-[950px] flex items-start" 
-          style={{ 
-            backgroundColor: '#161616',
-            backgroundImage: 'radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.04) 0%, transparent 50%)'
-          }}
-        >
-          {/* pt-12 and lg:pt-20 pulls the text closer to the top edge */}
-          <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10 w-full pt-12 lg:pt-20">
-            
-            <div className="flex flex-col justify-start items-start relative z-20">
-              <div className="mb-8">
-                <img 
-                  src="/assets/built.png" 
-                  alt="What we built" 
-                  className="h-8 md:h-9 w-auto object-contain"
-                />
+        {/* CALLIGRAPHY + MONUMENTAL HEADLINE */}
+        <div className="philo-reveal text-center mb-6">
+          <p className="font-calligraphy text-4xl sm:text-6xl text-orange-400 font-normal italic mb-1 tracking-wide leading-none drop-shadow-md">
+            Core Philosophy
+          </p>
+          <h2 className="special-font text-4xl sm:text-7xl lg:text-8xl font-black uppercase text-white tracking-tight leading-[0.88] drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
+            INTENTIONAL. <br className="hidden sm:inline" />
+            F<b>U</b>N. EFFECTI<b>V</b>E.
+          </h2>
+        </div>
+
+        {/* REFINED PHILOSOPHY STATEMENT */}
+        <p className="philo-reveal text-white/75 text-center text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl mb-14 font-general drop-shadow-sm">
+          A gamified platform built for young people, giving you the{" "}
+          <span className="text-white font-semibold">clarity</span>,{" "}
+          <span className="text-orange-400 font-semibold">skills</span>, and{" "}
+          <span className="text-[#f5efe6] font-semibold">uncompromising direction</span>{" "}
+          to build bold futures that command a voice in the modern world.
+        </p>
+
+        {/* 3 INTERACTIVE PILLARS GRID */}
+        <div className="philo-reveal grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 w-full">
+          {pillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              onMouseEnter={() => setActivePillar(idx)}
+              className={`p-6 sm:p-8 rounded-3xl transition-all duration-500 cursor-pointer border ${
+                activePillar === idx
+                  ? "bg-white/[0.07] border-orange-500/50 shadow-[0_20px_50px_rgba(251,146,60,0.15)] scale-[1.02]"
+                  : "bg-white/[0.02] border-white/10 hover:border-white/25 hover:bg-white/[0.04]"
+              } backdrop-blur-xl flex flex-col justify-between min-h-[220px]`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs text-orange-400 font-bold px-2.5 py-1 rounded-full bg-orange-500/15 border border-orange-500/30">
+                    {pillar.num}
+                  </span>
+                  <span className="font-mono text-[10px] tracking-widest uppercase text-white/40">
+                    {pillar.tag}
+                  </span>
+                </div>
+                <h3 className="special-font text-2xl sm:text-3xl text-white font-bold uppercase mb-2">
+                  {pillar.title}
+                </h3>
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-general">
+                  {pillar.desc}
+                </p>
               </div>
-              
-              <h2 className="font-sentinel text-white text-[32px] md:text-[42px] lg:text-[68px] font-medium leading-[1.1] tracking-tight">
-                A Structured Philosophy <br />
-                and Growth System.
-              </h2>
-              
-              <p 
-                /* leading-relaxed reduces the line spacing from the previous version */
-                className="font-jakarta text-[15px] lg:text-[17px] leading-relaxed max-w-2xl mt-6 lg:mt-8"
-                style={{ color: '#A9A9A9' }}
-              >
-                Most people are overwhelmed, distracted, and guessing their way through life. 
-                SmartGap fixes that. You move through structured modules that build how you 
-                think, how you work, and how you make decisions. SmartGap is not a course, 
-                it's a personalized, gamified platform that gives you clarity, direction, and the 
-                tools to build a life on purpose.
-              </p>
-            </div>
 
-            <div className="absolute bottom-[-100px] lg:bottom-[-750px] right-[-20px] lg:right-[-200px] z-0 lg:z-40 pointer-events-none">
-              <img 
-                ref={pencilRef}
-                src="/assets/illustrate-1.webp" 
-                alt="Growth Illustration" 
-                className="w-[350px] lg:w-[750px] h-auto drop-shadow-2xl opacity-20 lg:opacity-100"
-              />
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/40">
+                <span>SMARTGAP STANDARD</span>
+                <span className={`transition-colors ${activePillar === idx ? "text-orange-400 font-bold" : ""}`}>
+                  ACTIVE
+                </span>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
 };
 
 export default Philosophy;
+

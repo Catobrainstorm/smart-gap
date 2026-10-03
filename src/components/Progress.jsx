@@ -1,142 +1,178 @@
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import React, { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { APPLE_EASE, TACTILE_EASE } from "../lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
+const items = [
   "XP, levels & leaderboards",
   "Daily streaks that keep you consistent",
   "Achievement badges to collect",
   "Real projects for your portfolio",
-  "Certificates signed by Smartandad"
+  "Certificate awarded by Smartan House",
 ];
 
-const Progress = () => {
-  const container = useRef();
-  const imageRef = useRef();
+const BentoTilt = ({ children, className = "" }) => {
+  const [transformStyle, setTransformStyle] = useState("");
+  const itemRef = useRef(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top 70%", 
-        toggleActions: "play none none reverse"
-      }
-    });
+  const handleMouseMove = (e) => {
+    if (!itemRef.current) return;
 
-    // 1. THE IMAGE LANDING
-    tl.fromTo(imageRef.current, 
-      { 
-        x: -800, 
-        rotateY: 45, 
-        rotateZ: -10, 
-        scale: 0.8, 
-        opacity: 0 
-      },
-      { 
-        x: 0, 
-        rotateY: 0, 
-        rotateZ: 0, 
-        scale: 1, 
-        opacity: 1, 
-        duration: 1.8, 
-        ease: "expo.out" 
-      }
+    const { left, top, width, height } = itemRef.current.getBoundingClientRect();
+    const relativeX = (e.clientX - left) / width;
+    const relativeY = (e.clientY - top) / height;
+
+    const tiltX = (relativeY - 0.5) * 8;
+    const tiltY = (relativeX - 0.5) * -8;
+
+    setTransformStyle(
+      `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(0.99, 0.99, 0.99)`
     );
+  };
 
-    // 2. THE CONTENT MAGNETISM
-    tl.from(".progress-title", {
-      x: 100,
-      opacity: 0,
-      filter: "blur(10px)",
-      duration: 1,
-      ease: "power4.out"
-    }, "-=1");
-
-    tl.from(".progress-text", {
-      x: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=0.7");
-
-    // Re-targeted the new image asset for the "Suction" Effect
-    tl.from(".feature-item", {
-      x: 80,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-    }, "-=0.5");
-
-    // 3. IDLE FLOATING
-    gsap.to(imageRef.current, {
-      y: -20,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1.8 
-    });
-
-  }, { scope: container });
+  const handleMouseLeave = () => {
+    setTransformStyle("perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
+  };
 
   return (
-    <section ref={container} className="py-24 md:py-32 px-6 bg-white overflow-hidden perspective-1000">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+    <div
+      className={className}
+      ref={itemRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: transformStyle,
+        transition: "transform 0.25s ease-out",
+        willChange: "transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Progress = () => {
+  const container = useRef(null);
+  const imageRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+      });
+
+      tl.from(imageRef.current, {
+        x: -80,
+        opacity: 0,
+        scale: 0.92,
+        duration: 1.2,
+        ease: APPLE_EASE,
+      });
+
+      tl.from(
+        ".progress-reveal",
+        {
+          y: 35,
+          opacity: 0,
+          stagger: 0.08,
+          duration: 0.8,
+          ease: APPLE_EASE,
+        },
+        "-=0.8"
+      );
+    },
+    { scope: container }
+  );
+
+  return (
+    <section
+      ref={container}
+      className="relative w-full py-28 sm:py-36 px-6 sm:px-12 bg-white text-black overflow-hidden select-none"
+    >
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Left Side: The 3D Progress Asset */}
-        <div className="relative flex justify-center items-center order-2 md:order-1">
-          <img 
-            ref={imageRef}
-            src="/assets/progress.webp" 
-            alt="Growth Progress" 
-            className="progress-image w-full max-w-[520px] h-auto drop-shadow-[0_35px_60px_rgba(0,0,0,0.08)]" 
-          />
+        {/* LEFT COLUMN: 3D ASSET IN BENTO TILT CONTAINER */}
+        <div className="lg:col-span-5 flex justify-center items-center order-2 lg:order-1">
+          <BentoTilt className="w-full max-w-[480px] p-6 sm:p-8 rounded-3xl bg-[#f5efe6] border border-black/5 shadow-2xl flex items-center justify-center">
+            <img
+              ref={imageRef}
+              src="/assets/progress.webp"
+              alt="Growth Progress"
+              className="w-full h-auto drop-shadow-xl object-contain pointer-events-none"
+            />
+          </BentoTilt>
         </div>
 
-        {/* Right Side: Content */}
-        <div className="order-1 md:order-2">
+        {/* RIGHT COLUMN: CLEAN BENTO FEATURES CONTENT */}
+        <div className="lg:col-span-7 flex flex-col justify-center order-1 lg:order-2">
           
-          {/* IMAGE REPLACED "THE EXPERIENCE" BADGE */}
-          <div className="feature-item mb-8">
-            <img 
-              src="/assets/experience.png" 
-              alt="The Experience" 
-              className="h-10 md:h-12 w-auto object-contain"
-            />
+          {/* Badge */}
+          <div className="progress-reveal inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 mb-4 self-start">
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+            <span className="font-mono text-xs text-black/80 uppercase tracking-[0.25em] font-bold">
+              The Experience
+            </span>
           </div>
 
-          {/* Title */}
-          <h2 className="progress-title font-sentinel text-5xl md:text-[72px] font-medium leading-[1.05] mb-8 bg-gradient-to-r from-[#B066FE] via-[#FF5F9E] to-[#FF8E53] bg-clip-text text-transparent tracking-tight">
-            Progress You <br /> 
-            Can See & Feel
+          {/* Heading */}
+          <p className="progress-reveal font-calligraphy text-4xl sm:text-5xl text-orange-500 font-normal italic mb-1 tracking-wide leading-none">
+            Progress You Can
+          </p>
+
+          <h2 className="progress-reveal special-font text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-black tracking-tight leading-[0.88] mb-6">
+            SEE & FE<b>E</b>L
           </h2>
 
-          {/* Paragraph */}
-          <p className="progress-text font-jakarta text-slate-500 text-[16px] leading-relaxed mb-10 max-w-md">
-            SmartGap makes growth addictive. Watch your XP climb, your streaks build, and your badges unlock as you become the person you’re meant to be.
+          <p className="progress-reveal text-black/70 text-sm sm:text-base leading-relaxed max-w-xl font-general mb-8">
+            SmartGap makes growth addictive. Watch your XP climb, your streaks
+            build, and your badges unlock as you become the person you’re meant
+            to be.
           </p>
-          
-          {/* List items */}
-          <ul className="space-y-6">
-            {features.map((item, i) => (
-              <li key={i} className="feature-item flex items-start gap-4 text-[#161616] font-jakarta font-medium text-[16px]">
-                <div className="w-6 h-6 rounded-md border-[1.5px] border-slate-300 flex items-center justify-center bg-white shrink-0 mt-0.5">
-                  <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 4.5L4.5 8L11 1" stroke="#161616" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+
+          {/* Clean 5 Checklist Items in Bento Pill Tiles */}
+          <div className="space-y-3">
+            {items.map((item, i) => (
+              <BentoTilt
+                key={i}
+                className="progress-reveal flex items-center gap-4 p-4 sm:p-4.5 rounded-2xl bg-[#f5efe6] hover:bg-[#ede5d8] border border-black/5 transition-colors duration-300 shadow-sm cursor-default"
+              >
+                <div className="w-6 h-6 rounded-lg bg-black text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <svg
+                    width="12"
+                    height="9"
+                    viewBox="0 0 12 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 4.5L4.5 8L11 1"
+                      stroke="#ffffff"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
-                <span className="leading-tight">{item}</span>
-              </li>
+                <span className="font-general font-semibold text-xs sm:text-sm text-black/90">
+                  {item}
+                </span>
+              </BentoTilt>
             ))}
-          </ul>
+          </div>
+
         </div>
+
       </div>
     </section>
   );
 };
 
 export default Progress;
+
+

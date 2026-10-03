@@ -1,0 +1,117 @@
+/* src/styles/fonts.css
+ *
+ * Import this once, near the top of your global stylesheet or entry file
+ * (e.g. `import "./styles/fonts.css";` in main.jsx) — before any component
+ * CSS that uses `font-sentinel`.
+ *
+ * Weights are mapped so Tailwind's numeric font-weight utilities resolve
+ * to the correct real Sentinel file instead of a browser-synthesized
+ * fake bold/italic. Every heading site-wide currently uses `font-medium`
+ * (500), which now maps to the true Sentinel Medium file rather than a
+ * faux weight — should read noticeably crisper.
+ *
+ * Paths assume these sit in src/assets/fonts/ exactly as uploaded —
+ * adjust the relative path if this file lives somewhere else.
+ */
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Light-iF6618f54f9229b.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Light-Italic-iF6618f54f7343d.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Book-iF6618f54f8ce4b.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Book-Italic-iF6618f54f6ed4b.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Medium-iF6618f54f879d1.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Medium-Italic-iF6618f54f5be42.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Semibold-iF6618f54f828a4.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Semibold-Italic-iF6618f54f6a704.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Bold-iF6618f54f7d67f.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Bold-Italic-iF6618f54f65745.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Black-iF6618f54f7881c.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentinel";
+  src: url("../assets/fonts/Sentinel-Black-Italic-iF6618f54f610c5.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

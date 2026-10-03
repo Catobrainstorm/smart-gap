@@ -1,150 +1,204 @@
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { useState, useRef, useEffect } from "react";
+import Button from "./Button";
+import { TiLocationArrow } from "react-icons/ti";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useNavigate } from "react-router-dom";
 
-// Register the ScrollToPlugin so GSAP can handle window scrolling
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const container = useRef();
-  const starRef = useRef();
-  const guideRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [hasClicked, setHasClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedVideos, setLoadedVideos] = useState(0);
 
-  // Snappy scroll function (0.4s for elite responsiveness)
-  const scrollToWaitlist = () => {
-    gsap.to(window, {
-      duration: 0.2,
-      scrollTo: { y: "#waitlist-section", autoKill: false },
-      ease: "power2.out"
-    });
+  const totalVideos = 4;
+  const nextVideoRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleVideoLoad = () => {
+    setLoadedVideos((prev) => prev + 1);
   };
+
+  const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
+
+  const handleMiniVdClick = () => {
+    setHasClicked(true);
+    setCurrentIndex(upcomingVideoIndex);
+  };
+
+  useEffect(() => {
+    // Hide loader when videos load or fallback after 1.5s
+    if (loadedVideos >= totalVideos - 1) {
+      setIsLoading(false);
+    }
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, [loadedVideos]);
+
+  useGSAP(
+    () => {
+      if (hasClicked) {
+        gsap.set("#next-video", { visibility: "visible" });
+
+        gsap.to("#next-video", {
+          transformOrigin: "center center",
+          scale: 1,
+          width: "100%",
+          height: "100%",
+          duration: 1,
+          ease: "power1.inOut",
+          onStart: () => nextVideoRef.current?.play(),
+        });
+
+        gsap.from("#current-video", {
+          transformOrigin: "center center",
+          scale: 0,
+          duration: 1.5,
+          ease: "power1.inOut",
+        });
+      }
+    },
+    { dependencies: [currentIndex], revertOnUpdate: true }
+  );
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-
-    // 1. Set Initial States
-    gsap.set(".char", { y: "110%", opacity: 0 });
-    gsap.set(starRef.current, { y: 400, x: -50, scale: 0.5, opacity: 0, rotate: -45 });
-    gsap.set(guideRef.current, { scale: 0, opacity: 0 });
-    gsap.set(".hero-p", { opacity: 0, y: 20 });
-    gsap.set(".hero-btn-wrapper", { opacity: 0, y: 30, scale: 0.95 });
-
-    // 2. The Reveal Sequence
-    tl.to(".char", {
-      y: 0,
-      opacity: 1,
-      stagger: 0.02,
-      duration: 1,
-      delay: 0.3
-    })
-    .to(starRef.current, {
-      y: 0,
-      x: 0,
-      scale: 1,
-      rotate: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power4.out"
-    }, "-=0.8")
-    .to(guideRef.current, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(1.7)"
-    }, "-=0.7")
-    .to(".hero-p", { opacity: 0.8, y: 0, duration: 0.6 }, "-=0.4")
-    .to(".hero-btn-wrapper", { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      duration: 0.8, 
-      ease: "power3.out" 
-    }, "-=0.4");
-
-    // 3. Floating Animation for the Star
-    gsap.to(starRef.current, {
-      y: -15,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 2 
+    gsap.set("#video-frame", {
+      clipPath: "polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)",
+      borderRadius: "0 0 40% 10%",
     });
 
-    // 4. Mouse Parallax Effect
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const xMove = (clientX / window.innerWidth - 0.5) * 20;
-      const yMove = (clientY / window.innerHeight - 0.5) * 20;
-      gsap.to(starRef.current, { x: xMove, duration: 1, ease: "power2.out" });
-      gsap.to(guideRef.current, { x: -xMove, y: -yMove, duration: 1, ease: "power2.out" });
-    };
+    gsap.from("#video-frame", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      borderRadius: "0 0 0 0",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#video-frame",
+        start: "center center",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+  });
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-
-  }, { scope: container });
-
-  const splitText = (text) => {
-    return text.split("").map((char, i) => (
-      <span key={i} className="char inline-block">{char === " " ? "\u00A0" : char}</span>
-    ));
-  };
+  const getVideoSrc = (index) => `/videos/hero-${index}.mp4`;
 
   return (
-    <section 
-      ref={container} 
-      className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-white"
-    >
-      {/* Background Gradients */}
-      <div className="absolute top-[-10%] left-[-10%] w-[70%] lg:w-[50%] h-[50%] bg-[#E8F0FF] blur-[100px] lg:blur-[120px] rounded-full opacity-60 pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[60%] lg:w-[40%] h-[40%] bg-[#F5EFFF] blur-[100px] lg:blur-[120px] rounded-full opacity-60 pointer-events-none" />
+    <div className="relative h-dvh w-screen overflow-x-hidden bg-[#dfdff0] select-none">
+      {/* 3-BODY INTERACTIVE LOADER */}
+      {isLoading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-black transition-opacity duration-500">
+          <div className="three-body">
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+          </div>
+        </div>
+      )}
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 text-center z-10 pt-20">
-        <h1 className="font-sentinel text-[44px] md:text-[80px] lg:text-[105px] font-medium leading-[1.1] lg:leading-[0.85] tracking-tight mb-8 lg:mb-16 text-[#000000]">
-          <div className="overflow-hidden h-fit">{splitText("Raised")}</div>
-          <div className="relative inline-block">
-            <span className="relative z-20 overflow-hidden inline-block">{splitText("With")}</span>
-            
-            <img 
-              ref={starRef}
-              src="/assets/hero-star.webp" 
-              className="absolute -left-8 top-0 w-12 lg:left-45 lg:w-38 z-30 pointer-events-none" 
-              alt="Star"
-            />
-
-            <div className="relative inline-block ml-4 lg:ml-12">
-              <span className="overflow-hidden inline-block">{splitText("Structure.")}</span>
-              <img 
-                ref={guideRef}
-                src="/assets/hero-guide.webp" 
-                className="absolute -top-10 left-4 w-32 lg:-top-15 lg:left-55 lg:w-[190px] z-10 opacity-90 pointer-events-none"
-                alt="Guide UI"
+      {/* CLIPPED VIDEO FRAME THAT FOLDS ON SCROLL */}
+      <div
+        id="video-frame"
+        className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-black"
+      >
+        <div>
+          {/* CENTER EXPANDING MINI VIDEO TILE */}
+          <div className="mask-clip-path absolute-center absolute z-50 size-44 sm:size-56 md:size-64 cursor-pointer overflow-hidden rounded-2xl">
+            <div
+              onClick={handleMiniVdClick}
+              className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100 rounded-2xl overflow-hidden border border-white/40 shadow-2xl"
+            >
+              <video
+                ref={nextVideoRef}
+                src={getVideoSrc(upcomingVideoIndex)}
+                loop
+                muted
+                id="current-video"
+                className="size-44 sm:size-56 md:size-64 origin-center scale-150 object-cover object-center"
+                onLoadedData={handleVideoLoad}
               />
             </div>
           </div>
-        </h1>
-        
-        <p className="hero-p font-jakarta text-[#000000] text-[14px] lg:text-[16px] mt-10 lg:mt-20 mb-10 opacity-80 max-w-[280px] lg:max-w-none mx-auto">
-          A structured journey designed to shape how you think, build, and lead
-        </p>
 
-        {/* CLICKABLE IMAGE BUTTON */}
-        <div className="flex justify-center">
-          <button 
-            onClick={scrollToWaitlist}
-            className="hero-btn-wrapper appearance-none border-none bg-transparent p-0 cursor-pointer active:scale-95 transition-all duration-200 ease-out"
-          >
-            <img 
-              src="/assets/waitlist.png" 
-              alt="Join the waitlist" 
-              className="w-[220px] md:w-[280px] h-auto drop-shadow-xl hover:drop-shadow-2xl transition-all duration-300"
+          {/* NEXT TRANSITION EXPANDING VIDEO */}
+          <video
+            ref={nextVideoRef}
+            src={getVideoSrc(currentIndex)}
+            loop
+            muted
+            id="next-video"
+            className="absolute-center invisible absolute z-20 size-44 sm:size-56 md:size-64 object-cover object-center"
+            onLoadedData={handleVideoLoad}
+          />
+
+          {/* BACKGROUND ACTIVE VIDEO */}
+          <video
+            src={getVideoSrc(currentIndex)}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute left-0 top-0 size-full object-cover object-center"
+            onLoadedData={handleVideoLoad}
+          />
+
+          {/* CINEMATIC VIGNETTE SCRIM */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/70 pointer-events-none z-25" />
+        </div>
+
+        {/* BOTTOM-RIGHT PINNED FLOURISH (INSIDE VIDEO FRAME) */}
+        <div className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 text-right pointer-events-none">
+          <p className="font-calligraphy text-3xl sm:text-4xl md:text-5xl text-white italic font-normal tracking-wide leading-none mb-1 drop-shadow-md">
+            Redesign your
+          </p>
+          <h1 className="special-font hero-heading text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)] leading-[0.82]">
+            D<b>E</b>SIG<b>N</b>
+          </h1>
+          <p className="font-calligraphy text-4xl sm:text-5xl md:text-6xl text-white italic font-normal tracking-wide mt-1 leading-none drop-shadow-md">
+            future.
+          </p>
+        </div>
+
+        {/* TOP-LEFT PINNED INTRO & CTA */}
+        <div className="absolute left-0 top-0 z-40 size-full pointer-events-none">
+          <div className="mt-26 sm:mt-32 px-6 sm:px-12 max-w-lg pointer-events-auto">
+            <p className="font-calligraphy text-3xl sm:text-4xl md:text-5xl text-white font-normal italic mb-1 tracking-wide leading-none drop-shadow-sm">
+              Welcome to
+            </p>
+            <h1 className="special-font hero-heading text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
+              SM<b>A</b>RTG<b>A</b>P
+            </h1>
+            <p className="mt-2 sm:mt-3 mb-4 font-general text-[11px] sm:text-xs text-white/70 leading-relaxed max-w-[260px] drop-shadow-md">
+              A structured continuum designed to shape how you think, build, and
+              lead.
+            </p>
+
+            <Button
+              id="hero-join-waitlist"
+              title="Join Waitlist"
+              leftIcon={<TiLocationArrow className="text-xs" />}
+              containerClass="!bg-gradient-to-r !from-[#FF9600] !to-[#DA5127] hover:!brightness-110 text-white !px-4 !py-2 text-[10px] shadow-lg"
+              onClick={() => navigate("/waitlist")}
             />
-          </button>
+          </div>
         </div>
       </div>
-    </section>
+
+      {/* BOTTOM-RIGHT SOLID UNDERLAY HEADLINE (REVEALED ON SCROLL) */}
+      <div className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 z-0 text-right pointer-events-none">
+        <p className="font-calligraphy text-3xl sm:text-4xl md:text-5xl text-black/60 italic font-normal tracking-wide leading-none mb-1">
+          Redesign your
+        </p>
+        <h1 className="special-font hero-heading text-black leading-[0.82]">
+          D<b>E</b>SIG<b>N</b>
+        </h1>
+        <p className="font-calligraphy text-4xl sm:text-5xl md:text-6xl text-black italic font-normal tracking-wide mt-1 leading-none">
+          future.
+        </p>
+      </div>
+    </div>
   );
 };
 

@@ -1,34 +1,248 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "./fonts.css";
+@import "./styles/fonts.css";
 
-@theme {
-  --font-sentinel: "Sentinel", serif;
-  --font-jakarta: "Plus Jakarta Sans", sans-serif;
-  --color-smart-green: #22C55E;
-  --color-smart-dark: #050505;
+:root {
+  --ink: #0A0A0A;
+  --paper: #DFDFF0;
+  --white: #FFFFFF;
+  --volt: #FF9600;
+  --flame: #DA5127;
+  --flame-deep: #C2410C;
+  --night: #0F1220;
+  --glow-violet: #7C5CFF;
+  --glow-cyan: #35E0FF;
+
+  --font-display: "zentry", "Big Shoulders Display", "Bebas Neue", sans-serif;
+  --font-accent: "Playfair Display", "Sentinel", serif;
+  --font-body: "Plus Jakarta Sans", "general", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-@layer base {
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Book-iF6618f54f8ce4b.woff2') format('woff2');
-    font-weight: 400; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Sentinel';
-    src: url('./assets/fonts/Sentinel-Medium-iF6618f54f879d1.woff2') format('woff2');
-    font-weight: 500; font-style: normal; font-display: swap;
-  }
+@theme {
+  --color-ink: #0A0A0A;
+  --color-paper: #DFDFF0;
+  --color-volt: #FF9600;
+  --color-flame: #DA5127;
+  --color-flame-deep: #C2410C;
+  --color-night: #0F1220;
+  --color-glow-violet: #7C5CFF;
+  --color-glow-cyan: #35E0FF;
 
-  body {
-    @apply font-jakarta antialiased bg-[#050505] text-white m-0 p-0 overflow-x-hidden;
-  }
+  --font-zentry: "zentry", "Big Shoulders Display", "Bebas Neue", sans-serif;
+  --font-display: "zentry", "Big Shoulders Display", "Bebas Neue", sans-serif;
+  --font-accent: "Playfair Display", "Sentinel", serif;
+  --font-body: "Plus Jakarta Sans", "general", sans-serif;
+  --font-general: "general", "Plus Jakarta Sans", sans-serif;
+  --font-circular-web: "circular-web", sans-serif;
+  --font-robert-medium: "robert-medium", sans-serif;
+  --font-robert-regular: "robert-regular", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-calligraphy: "Playfair Display", "Sentinel", serif;
+}
 
-  h1, h2, h3 {
-    font-family: var(--font-sentinel) !important;
-  }
+/* --- Base Setup --- */
+* {
+  box-sizing: border-box;
+}
 
-  html, body {
-    margin: 0; padding: 0; scroll-behavior: smooth;
+html {
+  background-color: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--ink);
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--volt);
+  color: var(--ink);
+}
+
+/* --- Typography Helpers --- */
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+.signature-italic {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--flame);
+  letter-spacing: -0.01em;
+}
+
+.special-font {
+  font-family: var(--font-display);
+}
+
+.special-font b {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01" on;
+}
+
+/* --- Filmic Grain Overlay --- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- Glassmorphism Surfaces --- */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.glass-pill {
+  background: rgba(15, 18, 32, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.floating-nav {
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(251, 146, 60, 0.08);
+}
+
+/* --- Utilities & Positioning --- */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Angled & Mask Clips --- */
+.mask-clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  border-radius: 1.5rem;
+}
+
+.clip-corner-sm {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.clip-corner-md {
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+/* --- Audio Equalizer Bars --- */
+.indicator-line {
+  height: 4px;
+  width: 2.5px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease-in-out;
+}
+
+.indicator-line.active {
+  animation: indicator-line-anim 0.5s ease infinite alternate;
+}
+
+@keyframes indicator-line-anim {
+  0% {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    height: 16px;
+    background-color: var(--flame);
+  }
+}
+
+/* --- Marquee Keyframes --- */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse linear infinite;
+}
+
+/* --- Reduced Motion Safeguards --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .indicator-line.active {
+    animation: none !important;
+    height: 10px;
+    background-color: var(--flame);
   }
 }
