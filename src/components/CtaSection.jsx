@@ -62,12 +62,9 @@ const CtaSection = () => {
               <BentoTilt className="h-full">
                 <div className="h-full bg-[#0d1420] border border-white/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:border-white/25 transition-all shadow-2xl group">
                   <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-white/50 font-mono text-xs uppercase tracking-widest font-bold">
-                        Pathway 01
-                      </span>
-                      <span className="text-[10px] text-white/40 font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                        3-Year Continuum
+                    <div className="mb-3">
+                      <span className="text-[#FF9600] font-mono text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-[#FF9600]/10 border border-[#FF9600]/25">
+                        Pathway 1
                       </span>
                     </div>
 
@@ -129,12 +126,9 @@ const CtaSection = () => {
               <BentoTilt className="h-full">
                 <div className="h-full bg-[#0d1420] border border-white/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:border-white/25 transition-all shadow-2xl group">
                   <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-white/50 font-mono text-xs uppercase tracking-widest font-bold">
-                        Pathway 02
-                      </span>
-                      <span className="text-[10px] text-white/40 font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
-                        4-Week Sprint
+                    <div className="mb-3">
+                      <span className="text-[#FF9600] font-mono text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-[#FF9600]/10 border border-[#FF9600]/25">
+                        Pathway 2
                       </span>
                     </div>
 

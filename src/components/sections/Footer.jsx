@@ -89,7 +89,7 @@ export const Footer = () => {
               <FaXTwitter />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/thesmartgap?stkn=NDhzY3FndnlzM3Ni"
               target="_blank"
               rel="noreferrer"
               className="p-2.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 hover:text-[#FF9600] transition-all"

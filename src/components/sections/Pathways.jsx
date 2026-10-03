@@ -45,6 +45,12 @@ export const Pathways = ({ onOpenGiftCard, onOpenGiftBox }) => {
               className="h-full rounded-[40px] bg-[#0E1322] border border-white/12 p-8 sm:p-12 lg:p-14 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#FB923C]/50 transition-colors"
             >
               <div className="space-y-6">
+                <div>
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#FF9600]/15 border border-[#FF9600]/30 text-[#FF9600] font-mono text-xs sm:text-sm uppercase font-bold tracking-widest shadow-sm">
+                    Pathway 1
+                  </span>
+                </div>
+
                 <h3 className="display-title text-3xl sm:text-4xl lg:text-5xl text-white font-black uppercase leading-tight">
                   SmartGap into Optimus trybe
                 </h3>
@@ -118,6 +124,12 @@ export const Pathways = ({ onOpenGiftCard, onOpenGiftBox }) => {
               className="h-full rounded-[40px] bg-[#0E1322] border border-white/12 p-8 sm:p-12 lg:p-14 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#FF9600]/50 transition-colors"
             >
               <div className="space-y-6">
+                <div>
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#FF9600]/15 border border-[#FF9600]/30 text-[#FF9600] font-mono text-xs sm:text-sm uppercase font-bold tracking-widest shadow-sm">
+                    Pathway 2
+                  </span>
+                </div>
+
                 <h3 className="display-title text-3xl sm:text-4xl lg:text-5xl text-white font-black uppercase leading-tight">
                   SmartGap with Gift Card
                 </h3>
