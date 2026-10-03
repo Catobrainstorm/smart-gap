@@ -142,17 +142,17 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
             className="relative w-full max-w-2xl bg-[#0D0F17] border border-white/15 rounded-[32px] sm:rounded-[40px] shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden z-10 my-auto text-white max-h-[90vh] flex flex-col font-body"
           >
             {/* MODAL HEADER */}
-            <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-white/10 shrink-0 bg-[#090A10]">
+            <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-white/10 shrink-0 bg-[#090A10]">
               <div>
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2 mb-0.5 sm:mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
-                  <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#FB923C] font-bold">
+                  <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#FB923C] font-bold">
                     BULK ENROLLMENT PASS
                   </span>
                 </div>
                 <h3
                   id="gift-box-modal-title"
-                  className="display-title text-2xl sm:text-3xl font-black uppercase text-white tracking-tight"
+                  className="display-title text-xl sm:text-3xl font-black uppercase text-white tracking-tight"
                 >
                   GIFT BOX (50+ PASSES)
                 </h3>
@@ -161,7 +161,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
               <button
                 type="button"
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/12 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer"
                 aria-label="Close modal"
               >
                 <HiX className="w-5 h-5" />
@@ -171,7 +171,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
             {/* MODAL BODY */}
             <div
               data-lenis-prevent
-              className="p-6 sm:p-8 space-y-6 overflow-y-auto overscroll-contain"
+              className="p-4 sm:p-8 space-y-5 sm:space-y-6 overflow-y-auto overscroll-contain"
             >
               {paymentStatus !== "success" ? (
                 <>
@@ -180,56 +180,62 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                     Sponsoring a school, church, youth community, or company cohort? You can pay directly online for 50 or more passes, or chat with us on WhatsApp for official invoicing.
                   </p>
 
-                  {/* 3 Benefit Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div className="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                      <HiOutlineSupport className="w-5 h-5 text-[#FF9600]" />
-                      <h4 className="font-mono text-xs font-bold text-white uppercase">
-                        Dedicated Support
-                      </h4>
-                      <p className="text-[11px] text-white/60 leading-relaxed">
-                        Direct account manager to onboard and roster your cohort.
-                      </p>
+                  {/* 3 Benefit Cards - compact and responsive on mobile */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+                    <div className="p-3 sm:p-3.5 rounded-2xl bg-black/40 border border-white/10 flex sm:flex-col items-start gap-3 sm:gap-1.5">
+                      <HiOutlineSupport className="w-5 h-5 text-[#FF9600] shrink-0 mt-0.5 sm:mt-0" />
+                      <div>
+                        <h4 className="font-mono text-xs font-bold text-white uppercase">
+                          Dedicated Support
+                        </h4>
+                        <p className="text-[11px] text-white/60 leading-relaxed">
+                          Direct account manager to onboard and roster your cohort.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                      <HiOutlineTicket className="w-5 h-5 text-[#FB923C]" />
-                      <h4 className="font-mono text-xs font-bold text-white uppercase">
-                        Bulk Digital Passes
-                      </h4>
-                      <p className="text-[11px] text-white/60 leading-relaxed">
-                        Automated distribution with custom-branded passes.
-                      </p>
+                    <div className="p-3 sm:p-3.5 rounded-2xl bg-black/40 border border-white/10 flex sm:flex-col items-start gap-3 sm:gap-1.5">
+                      <HiOutlineTicket className="w-5 h-5 text-[#FB923C] shrink-0 mt-0.5 sm:mt-0" />
+                      <div>
+                        <h4 className="font-mono text-xs font-bold text-white uppercase">
+                          Bulk Digital Passes
+                        </h4>
+                        <p className="text-[11px] text-white/60 leading-relaxed">
+                          Automated distribution with custom-branded passes.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                      <HiOutlineAcademicCap className="w-5 h-5 text-[#35E0FF]" />
-                      <h4 className="font-mono text-xs font-bold text-white uppercase">
-                        Full Certification
-                      </h4>
-                      <p className="text-[11px] text-white/60 leading-relaxed">
-                        20 live sessions, 360° portfolio, and verified graduation.
-                      </p>
+                    <div className="p-3 sm:p-3.5 rounded-2xl bg-black/40 border border-white/10 flex sm:flex-col items-start gap-3 sm:gap-1.5">
+                      <HiOutlineAcademicCap className="w-5 h-5 text-[#35E0FF] shrink-0 mt-0.5 sm:mt-0" />
+                      <div>
+                        <h4 className="font-mono text-xs font-bold text-white uppercase">
+                          Full Certification
+                        </h4>
+                        <p className="text-[11px] text-white/60 leading-relaxed">
+                          20 live sessions, 360° portfolio, and verified graduation.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   {/* FORM WITH NUMBER PICKER & CHECKOUT */}
                   <form onSubmit={handlePaystackCheckout} className="space-y-4">
                     {/* Interactive Group Size Stepper & Slider */}
-                    <div className="p-5 rounded-[24px] bg-[#141824] border border-white/12 space-y-3">
-                      <div className="flex items-center justify-between">
+                    <div className="p-4 sm:p-5 rounded-[22px] sm:rounded-[24px] bg-[#141824] border border-white/12 space-y-3.5">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-white/50 block">
-                            Number of Cards in Box
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-white/50 block mb-1">
+                            Number of Passes in Box
                           </span>
-                          <div className="flex items-center gap-2 mt-1">
+                          <div className="flex items-center gap-2">
                             <button
                               type="button"
                               onClick={() => setGroupSize(Math.max(50, validGroupSize - 5))}
-                              className="w-8 h-8 rounded-lg bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 transition-colors"
+                              className="w-9 h-9 rounded-xl bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 active:scale-95 transition-all shrink-0 cursor-pointer"
                               aria-label="Decrease group size"
                             >
-                              <HiMinus className="w-3.5 h-3.5" />
+                              <HiMinus className="w-4 h-4" />
                             </button>
                             <input
                               type="number"
@@ -240,45 +246,48 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                                 const val = e.target.value;
                                 setGroupSize(val === "" ? "" : Math.max(50, parseInt(val, 10) || 50));
                               }}
-                              className="w-24 h-9 px-2 text-center bg-black/60 border border-white/20 rounded-lg text-white font-mono font-bold text-base focus:outline-none focus:border-[#FB923C]"
+                              className="w-20 sm:w-24 h-9 px-2 text-center bg-black/60 border border-white/20 rounded-xl text-white font-mono font-bold text-base focus:outline-none focus:border-[#FB923C]"
                             />
                             <button
                               type="button"
                               onClick={() => setGroupSize(validGroupSize + 5)}
-                              className="w-8 h-8 rounded-lg bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 transition-colors"
+                              className="w-9 h-9 rounded-xl bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 active:scale-95 transition-all shrink-0 cursor-pointer"
                               aria-label="Increase group size"
                             >
-                              <HiPlus className="w-3.5 h-3.5" />
+                              <HiPlus className="w-4 h-4" />
                             </button>
                             <span className="text-xs font-mono text-white/60">learners</span>
                           </div>
                         </div>
 
-                        <div className="text-right">
+                        {/* Total Pricing - Never overflows on mobile */}
+                        <div className="flex sm:flex-col items-center justify-between sm:items-end pt-2 sm:pt-0 border-t border-white/10 sm:border-t-0">
                           <span className="text-[10px] font-mono uppercase tracking-wider text-white/50 block">
-                            Total (₦50,000 / seat)
+                            Total (₦50k / seat)
                           </span>
-                          <span className="font-mono text-xl sm:text-2xl font-black text-[#FB923C]">
+                          <span className="font-mono text-xl sm:text-2xl font-black text-[#FB923C] tracking-tight">
                             ₦{estimatedTotal.toLocaleString()}
                           </span>
                         </div>
                       </div>
 
                       {/* Slider Input */}
-                      <input
-                        type="range"
-                        min="50"
-                        max="500"
-                        step="5"
-                        value={validGroupSize}
-                        onChange={(e) => setGroupSize(parseInt(e.target.value, 10))}
-                        className="w-full h-2 bg-black/60 rounded-lg appearance-none cursor-pointer accent-[#FB923C]"
-                      />
+                      <div className="pt-1">
+                        <input
+                          type="range"
+                          min="50"
+                          max="500"
+                          step="5"
+                          value={validGroupSize}
+                          onChange={(e) => setGroupSize(parseInt(e.target.value, 10))}
+                          className="w-full h-2 bg-black/60 rounded-lg appearance-none cursor-pointer accent-[#FB923C]"
+                        />
 
-                      <div className="flex items-center justify-between text-[10px] font-mono text-white/40">
-                        <span>50 Learners (Minimum)</span>
-                        <span>Drag slider or type exact count</span>
-                        <span>500+</span>
+                        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mt-1.5">
+                          <span>50 Min</span>
+                          <span className="hidden sm:inline">Drag slider or type exact count</span>
+                          <span>500+ Passes</span>
+                        </div>
                       </div>
                     </div>
 
@@ -294,7 +303,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                           value={purchaserName}
                           onChange={(e) => setPurchaserName(e.target.value)}
                           placeholder="e.g. Samuel Abbaly"
-                          className="w-full px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
+                          className="w-full px-3.5 sm:px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
                         />
                       </div>
 
@@ -307,7 +316,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                           value={organizationName}
                           onChange={(e) => setOrganizationName(e.target.value)}
                           placeholder="e.g. Apex High School / Church"
-                          className="w-full px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
+                          className="w-full px-3.5 sm:px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
                         />
                       </div>
                     </div>
@@ -322,7 +331,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="admin@school.org"
-                        className="w-full px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
+                        className="w-full px-3.5 sm:px-4 py-2.5 bg-black/50 border border-white/15 rounded-xl text-white text-xs sm:text-sm focus:outline-none focus:border-[#FB923C] transition-colors"
                       />
                     </div>
 
@@ -336,10 +345,11 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                     <button
                       type="submit"
                       disabled={paymentStatus === "loading"}
-                      className={`w-full py-4 font-mono font-black uppercase tracking-wider text-xs rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer ${paymentStatus === "loading"
-                        ? "bg-[#FB923C]/70 text-black cursor-wait"
-                        : "bg-[#FB923C] hover:bg-[#ea8430] text-black shadow-[0_4px_25px_rgba(251,146,60,0.35)]"
-                        }`}
+                      className={`w-full py-3.5 sm:py-4 px-4 font-mono font-black uppercase tracking-wider text-xs sm:text-sm rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
+                        paymentStatus === "loading"
+                          ? "bg-[#FB923C]/70 text-black cursor-wait"
+                          : "bg-[#FB923C] hover:bg-[#ea8430] active:scale-[0.99] text-black shadow-[0_4px_25px_rgba(251,146,60,0.35)]"
+                      }`}
                     >
                       {paymentStatus === "loading" ? (
                         <span className="flex items-center gap-2">
@@ -347,12 +357,12 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                           <span>Connecting Paystack...</span>
                         </span>
                       ) : (
-                        <span>Pay with Paystack • ₦{estimatedTotal.toLocaleString()} ({validGroupSize} passes)</span>
+                        <span className="text-center">Pay with Paystack • ₦{estimatedTotal.toLocaleString()} ({validGroupSize} passes)</span>
                       )}
                     </button>
 
-                    <div className="flex items-center justify-center gap-1.5 text-[10px] text-white/50 font-mono">
-                      <HiOutlineShieldCheck className="w-4 h-4 text-emerald-400" />
+                    <div className="flex items-center justify-center gap-1.5 text-[10px] text-white/50 font-mono text-center">
+                      <HiOutlineShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                       <span>Secured 256-bit payment encryption via Paystack</span>
                     </div>
 
@@ -365,14 +375,14 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                         href={whatsappUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2"
+                        className="w-full py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 text-center"
                       >
-                        <BsWhatsapp className="w-4 h-4 text-emerald-400" />
+                        <BsWhatsapp className="w-4 h-4 text-emerald-400 shrink-0" />
                         <span>Chat on WhatsApp for Invoicing ({validGroupSize} seats)</span>
                       </a>
                     </div>
 
-                    <div className="flex items-center justify-between text-xs pt-1">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs pt-1 text-center sm:text-left">
                       <button
                         type="button"
                         onClick={() => {
