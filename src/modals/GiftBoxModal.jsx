@@ -231,7 +231,7 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                           <div className="flex items-center gap-2">
                             <button
                               type="button"
-                              onClick={() => setGroupSize(Math.max(50, validGroupSize - 5))}
+                              onClick={() => setGroupSize(Math.max(50, validGroupSize - 1))}
                               className="w-9 h-9 rounded-xl bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 active:scale-95 transition-all shrink-0 cursor-pointer"
                               aria-label="Decrease group size"
                             >
@@ -240,17 +240,22 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                             <input
                               type="number"
                               min="50"
-                              max="1000"
+                              step="1"
                               value={groupSize}
                               onChange={(e) => {
-                                const val = e.target.value;
-                                setGroupSize(val === "" ? "" : Math.max(50, parseInt(val, 10) || 50));
+                                setGroupSize(e.target.value);
+                              }}
+                              onBlur={() => {
+                                const num = parseInt(groupSize, 10);
+                                if (isNaN(num) || num < 50) {
+                                  setGroupSize(50);
+                                }
                               }}
                               className="w-20 sm:w-24 h-9 px-2 text-center bg-black/60 border border-white/20 rounded-xl text-white font-mono font-bold text-base focus:outline-none focus:border-[#FB923C]"
                             />
                             <button
                               type="button"
-                              onClick={() => setGroupSize(validGroupSize + 5)}
+                              onClick={() => setGroupSize(validGroupSize + 1)}
                               className="w-9 h-9 rounded-xl bg-black/60 border border-white/15 flex items-center justify-center text-white hover:border-white/40 active:scale-95 transition-all shrink-0 cursor-pointer"
                               aria-label="Increase group size"
                             >
@@ -276,8 +281,8 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
                         <input
                           type="range"
                           min="50"
-                          max="500"
-                          step="5"
+                          max={Math.max(500, validGroupSize)}
+                          step="1"
                           value={validGroupSize}
                           onChange={(e) => setGroupSize(parseInt(e.target.value, 10))}
                           className="w-full h-2 bg-black/60 rounded-lg appearance-none cursor-pointer accent-[#FB923C]"
@@ -285,8 +290,8 @@ export const GiftBoxModal = ({ isOpen, onClose, onBackToGiftCard }) => {
 
                         <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mt-1.5">
                           <span>50 Min</span>
-                          <span className="hidden sm:inline">Drag slider or type exact count</span>
-                          <span>500+ Passes</span>
+                          <span className="hidden sm:inline">Drag slider or type exact count (50+)</span>
+                          <span>{Math.max(500, validGroupSize)}+ Passes</span>
                         </div>
                       </div>
                     </div>
