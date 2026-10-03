@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const TOTAL_VIDEOS = 4;
 const MARQUEE_ITEMS = [
   "4 WEEKS INTENSIVE",
-  "20 SESSIONS WITH SMARTANDAD",
+  "20 SESSIONS WITH EXPERTS",
   "360° PORTFOLIO",
   "INDUSTRY CERTIFIED",
   "EARN XP & BADGES",
@@ -282,9 +282,8 @@ export const Hero = ({ onOpenVideoModal }) => {
 
         {/* SCROLL CUE */}
         <div
-          className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-40 pointer-events-none flex flex-col items-center gap-1 transition-opacity duration-300 ${
-            isScrolled ? "opacity-0" : "opacity-70 animate-bounce"
-          }`}
+          className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-40 pointer-events-none flex flex-col items-center gap-1 transition-opacity duration-300 ${isScrolled ? "opacity-0" : "opacity-70 animate-bounce"
+            }`}
         >
           <div className="w-4 h-7 rounded-full border border-white/40 flex items-start justify-center p-1">
             <div className="w-1 h-2 rounded-full bg-[#FF9600] animate-pulse" />
