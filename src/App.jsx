@@ -106,7 +106,7 @@ const LandingPage = () => {
       {/* 3.2 Hero */}
       <Hero
         onOpenVideoModal={() => {
-          document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+          document.getElementById("philosophy")?.scrollIntoView({ behavior: "smooth" });
         }}
       />
 

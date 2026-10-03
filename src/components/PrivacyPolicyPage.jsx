@@ -22,15 +22,12 @@ export const PrivacyPolicyPage = () => {
           <span className="text-[11px] sm:text-xs">Back to SmartGap</span>
         </Link>
 
-        <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+        <Link to="/" className="flex items-center group">
           <img
             src="/assets/logo.webp"
-            alt="SmartGap Logo"
-            className="w-6 h-6 sm:w-7 sm:h-7 object-contain group-hover:scale-105 transition-transform"
+            alt="SmartGap"
+            className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
           />
-          <span className="display-title font-black text-base sm:text-lg tracking-tight uppercase text-white">
-            SMARTGAP
-          </span>
         </Link>
       </header>
 

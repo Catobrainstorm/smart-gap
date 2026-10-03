@@ -8,7 +8,7 @@ const GiftBoxModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Smartan House, I would like to inquire about getting a SmartGap Mini Gift Box for a group of 50+ participants."
+    "Hello Smartan House, I would like to inquire about getting a SmartGap with Gift Card Gift Box for a group of 50+ participants."
   );
   const whatsappUrl = `https://wa.me/2348166548777?text=${whatsappMessage}`;
 
@@ -29,7 +29,7 @@ const GiftBoxModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-white/50 block">
-                SmartGap Mini
+                SmartGap with Gift Card
               </span>
               <h3 className="special-font text-2xl font-black uppercase text-white tracking-tight">
                 Gift Box (50+ Cohort)

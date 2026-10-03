@@ -128,11 +128,11 @@ export const Preloader = ({ onComplete }) => {
         className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-sm w-full"
       >
         {/* Brand Logo */}
-        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/15 p-2.5 mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(255,150,0,0.15)] animate-pulse">
+        <div className="mb-6 flex items-center justify-center animate-pulse">
           <img
             src="/assets/logo.webp"
             alt="SmartGap"
-            className="w-full h-full object-contain"
+            className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_0_30px_rgba(255,150,0,0.25)]"
           />
         </div>
 

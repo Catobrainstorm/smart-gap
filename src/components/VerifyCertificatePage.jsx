@@ -92,7 +92,8 @@ export const VerifyCertificatePage = () => {
           status: "valid",
           serial: data.serial || cleanSerial,
           name: data.name,
-          Programme: data.Programme || "SmartGap",
+          programme: data.programme || data.program || data.Programme || "SmartGap",
+          Programme: data.programme || data.program || data.Programme || "SmartGap",
           completedOn: data.completedOn,
           level: data.level || null,
           issuedOn: data.issuedOn,
@@ -169,15 +170,12 @@ export const VerifyCertificatePage = () => {
           <span className="text-[11px] sm:text-xs">Back to SmartGap</span>
         </Link>
 
-        <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+        <Link to="/" className="flex items-center group">
           <img
             src="/assets/logo.webp"
-            alt="SmartGap Logo"
-            className="w-6 h-6 sm:w-7 sm:h-7 object-contain group-hover:scale-105 transition-transform"
+            alt="SmartGap"
+            className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
           />
-          <span className="display-title font-black text-base sm:text-lg tracking-tight uppercase text-white">
-            SMARTGAP
-          </span>
         </Link>
       </header>
 
@@ -265,7 +263,10 @@ export const VerifyCertificatePage = () => {
 
                   <p className="font-body text-sm sm:text-base text-white/90 leading-relaxed pt-1">
                     <strong className="text-white">{result.name}</strong> completed the{" "}
-                    <strong className="text-white">{result.Programme}</strong> Programme
+                    <strong className="text-white">
+                      {(result.Programme || "SmartGap").replace(/\bProgram\b/gi, "Programme")}
+                    </strong>
+                    {!/\bprogramme\b/i.test(result.Programme || "") ? " Programme" : ""}
                     {result.completedOn ? ` on ${formatDate(result.completedOn)}` : ""}.
                     {result.level ? ` Level: ${result.level}.` : ""}
                   </p>

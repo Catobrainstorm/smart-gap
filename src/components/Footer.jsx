@@ -20,24 +20,17 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-white/10">
             {/* Brand Identity */}
             <div
-              className="flex items-center gap-3.5 cursor-pointer group"
+              className="flex flex-col items-start gap-2 cursor-pointer group"
               onClick={scrollToTop}
             >
-              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <img
-                  src="/assets/logo.webp"
-                  alt="SmartGap Logo"
-                  className="w-7 h-7 object-contain"
-                />
-              </div>
-              <div>
-                <span className="font-serif text-white text-2xl font-bold tracking-tight block">
-                  SmartGap
-                </span>
-                <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest block">
-                  By Smartan House
-                </span>
-              </div>
+              <img
+                src="/assets/logo.webp"
+                alt="SmartGap"
+                className="h-8 w-auto object-contain group-hover:scale-105 transition-transform"
+              />
+              <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest block pl-0.5">
+                By Smartan House
+              </span>
             </div>
 
             {/* Navigation Pills */}

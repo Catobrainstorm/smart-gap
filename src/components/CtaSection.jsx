@@ -45,7 +45,7 @@ const CtaSection = () => {
             </h2>
 
             <p className="text-white/70 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed font-general">
-              Two distinct avenues to enter: the 3-year Optimus Trybe transformational journey or the 4-week SmartGap Mini intensive.
+              Two distinct avenues to enter: the 3-year Optimus Trybe transformational journey or the 4-week SmartGap with Gift Card intensive.
             </p>
           </motion.div>
 
@@ -76,7 +76,7 @@ const CtaSection = () => {
                     </h3>
 
                     <p className="text-white/70 text-sm leading-relaxed mb-6 font-general">
-                      This pathway onboards you into the SmartGap Program to complete your <strong>360 degrees personal development portfolio</strong> and earn an induction to the <strong>Optimus Trybe</strong>. The Optimus Trybe is a growth continuum where you’re assigned into industry circles and your personal transformational journey is supported over a period of <strong>three years</strong>. To get on this Program you have to join the waitlist.
+                      This pathway onboards you into the SmartGap Programme to complete your <strong>360 degrees personal development portfolio</strong> and earn an induction to the <strong>Optimus Trybe</strong>. The Optimus Trybe is a growth continuum where you’re assigned into industry circles and your personal transformational journey is supported over a period of <strong>three years</strong>. To get on this Programme you have to join the waitlist.
                     </p>
 
                     {/* How it is funded box */}
@@ -118,7 +118,7 @@ const CtaSection = () => {
               </BentoTilt>
             </motion.div>
 
-            {/* ---------------- PATHWAY 2: SMARTGAP MINI ---------------- */}
+            {/* ---------------- PATHWAY 2: SmartGap with Gift Card ---------------- */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -139,11 +139,11 @@ const CtaSection = () => {
                     </div>
 
                     <h3 className="special-font text-2xl sm:text-3xl lg:text-4xl text-white font-black uppercase tracking-tight mt-1 mb-4">
-                      SmartGap Mini
+                      SmartGap with Gift Card
                     </h3>
 
                     <p className="text-white/70 text-sm leading-relaxed mb-6 font-general">
-                      This allows you to take only the <strong>4 weeks 360 degree personal development Programme</strong>, complete with all the projects and certification. This Program doesn’t include induction into the Optimus Trybe.
+                      This allows you to take only the <strong>4 weeks 360 degree personal development Programme</strong>, complete with all the projects and certification. This Programme doesn’t include induction into the Optimus Trybe.
                     </p>
 
                     {/* Two choices preview cards */}

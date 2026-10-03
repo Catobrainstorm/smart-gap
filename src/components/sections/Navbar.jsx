@@ -119,7 +119,7 @@ export const Navbar = ({ onOpenGiftModal }) => {
               : "bg-transparent py-2"
             }`}
         >
-          {/* LEFT: LOGO */}
+          {/* LEFT: LOGO (WORDMARK) */}
           <div
             onClick={() => {
               if (location.pathname === "/") {
@@ -128,21 +128,14 @@ export const Navbar = ({ onOpenGiftModal }) => {
                 navigate("/");
               }
             }}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center cursor-pointer group py-1"
             title="SmartGap Home"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 border border-white/20 p-2 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:border-[#FF9600]">
-              <img
-                src="/assets/logo.webp"
-                alt="SmartGap Logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            {!isScrolled && (
-              <span className="font-mono font-bold text-xs uppercase tracking-[0.25em] text-white/80 hidden sm:inline-block">
-                SMARTGAP
-              </span>
-            )}
+            <img
+              src="/assets/logo.webp"
+              alt="SmartGap"
+              className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
 
           {/* CENTER: DESKTOP NAV LINKS */}

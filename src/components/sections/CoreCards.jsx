@@ -19,7 +19,7 @@ const CARDS = [
   },
   {
     id: 3,
-    title: "20 Sessions with Smartandad",
+    title: "20 Sessions with Experts",
     img: "/img/core3.png",
   },
   {

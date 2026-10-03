@@ -391,7 +391,7 @@ const SponsorshipModal = ({ isOpen, onClose }) => {
                   <span>{donorData.fullName || "Anonymous"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white/50">Program:</span>
+                  <span className="text-white/50">Programme:</span>
                   <span>Optimus Trybe (3-Year Continuum)</span>
                 </div>
               </div>

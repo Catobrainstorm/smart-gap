@@ -49,7 +49,7 @@ const GiftCardModal = ({ isOpen, onClose }) => {
         quantity: validQuantity,
         voucherCode: tokenCode,
         unitPrice: UNIT_PRICE,
-        ProgramScope: "SmartGap Mini (4-Week 360° Personal Development Programme)",
+        ProgramScope: "SmartGap with Gift Card (4-Week 360° Personal Development Programme)",
       },
       onSuccess: (res) => {
         setIsSubmitting(false);
@@ -99,7 +99,7 @@ const GiftCardModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 shrink-0">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-white/50 block">
-                SmartGap Mini
+                SmartGap with Gift Card
               </span>
               <h3 className="special-font text-2xl font-black uppercase text-white tracking-tight">
                 Get a Gift Card
@@ -277,7 +277,7 @@ const GiftCardModal = ({ isOpen, onClose }) => {
                   Payment Successful
                 </h3>
                 <p className="text-white/70 text-xs sm:text-sm mb-6">
-                  Your SmartGap Mini order for <strong>{paymentSuccess.quantity} Gift {paymentSuccess.quantity === 1 ? "Card" : "Cards"}</strong> ({paymentSuccess.recipient}) has been confirmed.
+                  Your SmartGap with Gift Card order for <strong>{paymentSuccess.quantity} Gift {paymentSuccess.quantity === 1 ? "Card" : "Cards"}</strong> ({paymentSuccess.recipient}) has been confirmed.
                 </p>
 
                 <div className="bg-black/50 border border-white/15 rounded-2xl p-4 mb-6 text-center">

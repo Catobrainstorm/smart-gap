@@ -109,15 +109,12 @@ const Waitlist = () => {
           <span className="text-[11px] sm:text-xs">Back to SmartGap</span>
         </Link>
 
-        <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+        <Link to="/" className="flex items-center group">
           <img
             src="/assets/logo.webp"
-            alt="SmartGap Logo"
-            className="w-6 h-6 sm:w-7 sm:h-7 object-contain group-hover:scale-105 transition-transform"
+            alt="SmartGap"
+            className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
           />
-          <span className="display-title font-black text-base sm:text-lg tracking-tight uppercase text-white">
-            SMARTGAP
-          </span>
         </Link>
       </header>
 
@@ -125,9 +122,9 @@ const Waitlist = () => {
       <section className="px-4 md:px-8 lg:px-12 pt-6 md:pt-14 pb-20 relative overflow-x-clip">
         <div className="max-w-[1400px] mx-auto bg-[#0D0D0D] border border-white/[0.05] rounded-[40px] md:rounded-[60px] relative overflow-hidden md:overflow-visible p-8 md:p-16 lg:p-24 min-h-[700px] md:min-h-[850px] flex flex-col justify-center md:justify-start z-20 shadow-2xl">
           
-          {/* INCREASED LOGO SIZE */}
+          {/* LOGO WORDMARK */}
           <div className="mb-10 md:mb-14">
-            <img src="/assets/logo.webp" alt="Logo" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+            <img src="/assets/logo.webp" alt="SmartGap Logo" className="h-10 sm:h-12 md:h-14 w-auto object-contain" />
           </div>
 
           <div className="relative z-30 max-w-4xl space-y-8">

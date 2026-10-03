@@ -1,5 +1,5 @@
 // src/modals/GiftCardModal.jsx
-// Redesigned SmartGap Mini Gift Card Modal with live 3D card preview, 4 color themes,
+// Redesigned SmartGap with Gift Card Gift Card Modal with live 3D card preview, 4 color themes,
 // live personal message with counter, masked token, 50+ cohort switcher, and robust Paystack payment.
 
 import React, { useState, useEffect } from "react";
@@ -109,7 +109,7 @@ export const GiftCardModal = ({ isOpen, onClose, onSwitchToGiftBox }) => {
         message: message.trim() || "Empower your journey.",
         theme: selectedTheme,
         unitPrice: UNIT_PRICE,
-        ProgramScope: "SmartGap Mini (4-Week 360° Personal Development Programme)",
+        ProgramScope: "SmartGap with Gift Card (4-Week 360° Personal Development Programme)",
       },
       onSuccess: async (res) => {
         console.log("2. Paystack payment verified by gateway:", res);
@@ -231,7 +231,7 @@ export const GiftCardModal = ({ isOpen, onClose, onSwitchToGiftBox }) => {
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#FF9600] animate-pulse" />
                   <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#FF9600] font-bold">
-                    SMARTGAP MINI PASS
+                    SmartGap with Gift Card PASS
                   </span>
                 </div>
                 <h3
@@ -263,7 +263,7 @@ export const GiftCardModal = ({ isOpen, onClose, onSwitchToGiftBox }) => {
                   <div className="lg:col-span-6 flex flex-col items-center">
                     <div className="w-full text-left mb-4">
                       <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-light">
-                        Give someone the 4-week SmartGap Mini Programme: 20 live sessions with Smartandad, a 360° personal development portfolio, and an official certificate.
+                        Give someone the 4-week SmartGap with Gift Card Programme: 20 live sessions with Smartandad, a 360° personal development portfolio, and an official certificate.
                       </p>
                     </div>
 

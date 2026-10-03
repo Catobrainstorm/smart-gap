@@ -16,7 +16,7 @@ const OUTCOMES = [
   {
     num: "01",
     short: "Reconstruct your mental model of the world",
-    text: "The Program helps a young person reconstruct their mental model of the world so that they can expand their vision of what is truly possible.",
+    text: "The Programme helps a young person reconstruct their mental model of the world so that they can expand their vision of what is truly possible.",
   },
   {
     num: "02",
@@ -118,7 +118,7 @@ export const LearningOutcomes = () => {
                   className={`group p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl transition-all duration-300 cursor-pointer border ${
                     isActive
                       ? "bg-white/[0.08] border-white/25 shadow-xl scale-[1.01] opacity-100"
-                      : "bg-white/[0.02] border-white/8 opacity-45 hover:opacity-75 hover:bg-white/[0.04]"
+                      : "bg-white/[0.06] lg:bg-white/[0.02] border-white/15 lg:border-white/8 opacity-100 lg:opacity-45 lg:hover:opacity-75 lg:hover:bg-white/[0.04]"
                   }`}
                 >
                   <div className="flex items-start gap-4 sm:gap-5">
@@ -127,7 +127,7 @@ export const LearningOutcomes = () => {
                       className={`font-mono text-xl sm:text-2xl lg:text-3xl font-black transition-colors duration-300 shrink-0 ${
                         isActive
                           ? "text-[#FF9600]"
-                          : "text-white/30 group-hover:text-white/50"
+                          : "text-[#FF9600] lg:text-white/30 lg:group-hover:text-white/50"
                       }`}
                     >
                       {item.num}
@@ -139,7 +139,7 @@ export const LearningOutcomes = () => {
                         className={`font-body text-sm sm:text-base lg:text-lg font-normal leading-[1.6] transition-colors duration-300 ${
                           isActive
                             ? "text-white"
-                            : "text-white/40 group-hover:text-white/70"
+                            : "text-white lg:text-white/40 lg:group-hover:text-white/70"
                         }`}
                       >
                         {item.text}

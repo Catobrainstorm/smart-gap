@@ -19,7 +19,7 @@ const PROGRESS_ITEMS = [
   "Daily streaks that keep you consistent",
   "Achievement badges to collect",
   "Real projects for your portfolio",
-  "Certificates signed by Smartandad",
+  "Certificates awarded by Smartan House",
 ];
 
 const WEEK_DAYS = [
@@ -54,7 +54,7 @@ export const SeeAndFeel = () => {
         },
         colors: ["#FF9600", "#DA5127", "#7C5CFF", "#0A0A0A"],
       });
-    } catch (_) {}
+    } catch (_) { }
   };
 
   return (
@@ -206,11 +206,10 @@ export const SeeAndFeel = () => {
               type="button"
               onClick={handleClaimQuest}
               disabled={hasClaimed}
-              className={`w-full py-3.5 rounded-2xl font-mono text-xs font-black uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg ${
-                hasClaimed
+              className={`w-full py-3.5 rounded-2xl font-mono text-xs font-black uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg ${hasClaimed
                   ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 cursor-default"
                   : "bg-gradient-to-r from-[#FF9600] to-[#DA5127] hover:from-[#ff9f1a] hover:to-[#e05b30] text-white shadow-[0_8px_30px_rgba(255,150,0,0.35)]"
-              }`}
+                }`}
             >
               {hasClaimed ? (
                 <>

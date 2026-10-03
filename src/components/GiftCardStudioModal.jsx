@@ -37,7 +37,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
     senderName: "Samuel Abbaly",
     senderEmail: "",
     phone: "",
-    personalMessage: "Here is your 4-week SmartGap Mini pass. Build your 360° portfolio!",
+    personalMessage: "Here is your 4-week SmartGap with Gift Card pass. Build your 360° portfolio!",
     giftType: "friend", // 'self' | 'friend' | 'family'
   });
 
@@ -90,7 +90,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
         pack: selectedPack,
         cardCount: currentPack?.cards || 1,
         generatedCode: generatedToken,
-        ProgramScope: "SmartGap Mini (4 Weeks 360° Personal Development)",
+        ProgramScope: "SmartGap with Gift Card (4 Weeks 360° Personal Development)",
       },
       onSuccess: (res) => {
         setIsSubmitting(false);
@@ -142,7 +142,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
         phone: giftBoxData.phone,
         cohortSize: giftBoxData.cohortSize,
         notes: giftBoxData.cohortNotes,
-        ProgramScope: "SmartGap Mini Enterprise Gift Box (50+ Cohort)",
+        ProgramScope: "SmartGap with Gift Card Enterprise Gift Box (50+ Cohort)",
       },
       onSuccess: (res) => {
         setIsSubmitting(false);
@@ -197,7 +197,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
               </div>
               <div>
                 <h3 className="special-font text-xl sm:text-2xl font-black uppercase text-white leading-none">
-                  SmartGap Mini Portal
+                  SmartGap with Gift Card Portal
                 </h3>
                 <span className="text-[11px] text-white/50 font-mono">
                   4-Week Personal Development & Certification
@@ -302,7 +302,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
 
                     {/* Program Note Notice */}
                     <div className="w-full max-w-[440px] mt-3 p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-white/70 text-[11px] leading-relaxed">
-                      💡 <strong>Note:</strong> This covers the intensive 4-week 360° personal development Program and credential. It does not include induction into the 3-year Optimus Trybe.
+                      💡 <strong>Note:</strong> This covers the intensive 4-week 360° personal development Programme and credential. It does not include induction into the 3-year Optimus Trybe.
                     </div>
                   </div>
 
@@ -462,7 +462,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
                       Enterprise & Community Cohorts
                     </span>
                     <h4 className="special-font text-3xl font-black uppercase text-white mt-2">
-                      SmartGap Mini Gift Box
+                      SmartGap with Gift Card Gift Box
                     </h4>
                     <p className="text-white/70 text-xs sm:text-sm mt-2">
                       • <strong>50 people minimum</strong>. If you want to get gift cards for a small group larger than 50, we provide dedicated backend support and bulk administrative setup.
@@ -626,7 +626,7 @@ const GiftCardStudioModal = ({ isOpen, onClose, initialTab = "giftcard" }) => {
                   <HiCheckCircle className="w-10 h-10" />
                 </div>
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-purple-400 block mb-1">
-                  Payment Confirmed • SmartGap Mini
+                  Payment Confirmed • SmartGap with Gift Card
                 </span>
                 <h3 className="special-font text-3xl font-black uppercase text-white mb-2">
                   Gift Pass Activated!

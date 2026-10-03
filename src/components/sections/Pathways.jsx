@@ -1,7 +1,7 @@
 // src/components/sections/Pathways.jsx
 // Section 3.9: Pathways (Admissions and sponsorship ecosystem)
 // Title: Choose your SmartGap pathways
-// Two spacious contrasting cards: SmartGap into Optimus trybe & SmartGap Mini with exact copy.
+// Two spacious contrasting cards: SmartGap into Optimus trybe & SmartGap with Gift Card with exact copy.
 // All diagrams, FAQs, and trust rows removed per Brief v2.
 
 import React, { useState } from "react";
@@ -56,7 +56,7 @@ export const Pathways = ({ onOpenGiftCard, onOpenGiftBox }) => {
 
                 {/* Body */}
                 <p className="font-body text-sm sm:text-base text-white/80 leading-[1.6] font-light">
-                  This pathway onboards you into the SmartGap Program to complete your 360 degrees personal development portfolio and earn an induction to the Optimus trybe. The Optimus trybe is a growth continuum where you're assigned into industry circles and your personal transformational journey is supported over a period of three years. To get on this Programme you have to join the waitlist.
+                  This pathway onboards you into the SmartGap Programme to complete your 360 degrees personal development portfolio and earn an induction to the Optimus trybe. The Optimus trybe is a growth continuum where you're assigned into industry circles and your personal transformational journey is supported over a period of three years. To get on this Programme you have to join the waitlist.
                 </p>
 
                 {/* How it is funded */}
@@ -102,7 +102,7 @@ export const Pathways = ({ onOpenGiftCard, onOpenGiftBox }) => {
             </TiltCard>
           </div>
 
-          {/* ================= CARD 2: SMARTGAP MINI ================= */}
+          {/* ================= CARD 2: SmartGap with Gift Card ================= */}
           <div
             onMouseEnter={() => setHoveredCard("mini")}
             onMouseLeave={() => setHoveredCard(null)}
@@ -119,7 +119,7 @@ export const Pathways = ({ onOpenGiftCard, onOpenGiftBox }) => {
             >
               <div className="space-y-6">
                 <h3 className="display-title text-3xl sm:text-4xl lg:text-5xl text-white font-black uppercase leading-tight">
-                  SmartGap Mini
+                  SmartGap with Gift Card
                 </h3>
 
                 {/* Body */}

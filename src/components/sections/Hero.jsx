@@ -246,7 +246,7 @@ export const Hero = ({ onOpenVideoModal }) => {
                 onClick={() => {
                   if (onOpenVideoModal) onOpenVideoModal();
                   else {
-                    document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("philosophy")?.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-body text-sm font-medium backdrop-blur-md transition-all active:scale-95 cursor-pointer"

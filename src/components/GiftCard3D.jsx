@@ -147,7 +147,7 @@ export const GiftCard3D = ({
                   <h4
                     className={`font-bold text-xs tracking-wider uppercase font-mono leading-none ${currentTheme.accentText}`}
                   >
-                    SmartGap Mini
+                    SmartGap with Gift Card
                   </h4>
                   <span className="text-[9px] text-white/50 tracking-widest font-mono uppercase">
                     Gift Card

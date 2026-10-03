@@ -98,7 +98,7 @@ const Navbar = () => {
       >
         <header className="relative w-full h-full">
           <nav className="flex h-full w-full items-center justify-between p-1.5 sm:p-2">
-            {/* LEFT: CREAM / BEIGE LOGO PILL (NO TEXT, MERGED TO LEFT) */}
+            {/* LEFT: LOGO (WORDMARK) */}
             <div
               onClick={() => {
                 if (location.pathname === "/") {
@@ -107,13 +107,13 @@ const Navbar = () => {
                   navigate("/");
                 }
               }}
-              className="flex items-center justify-center bg-[#f5efe6] hover:bg-[#eae1d0] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] border border-[#e2d6c5]/80 transition-all duration-300 group active:scale-95 cursor-pointer shrink-0"
+              className="flex items-center cursor-pointer group py-1"
               title="SmartGap Home"
             >
               <img
                 src="/assets/logo.webp"
                 alt="SmartGap Logo"
-                className="h-4.5 sm:h-5 md:h-5.5 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 

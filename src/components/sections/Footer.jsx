@@ -18,22 +18,15 @@ export const Footer = () => {
         {/* TOP ROW: LOGO, NAV LINKS & ROCKET BACK-TO-TOP */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-white/10">
           {/* Brand Identity */}
-          <div className="flex items-center gap-3.5 cursor-pointer group" onClick={scrollToTop}>
-            <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center justify-center group-hover:scale-105 group-hover:border-[#FF9600] transition-all">
-              <img
-                src="/assets/logo.webp"
-                alt="SmartGap Logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <span className="display-title text-2xl font-black uppercase text-white tracking-tight block">
-                SMARTGAP
-              </span>
-              <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest block">
-                BY SMARTAN HOUSE
-              </span>
-            </div>
+          <div className="flex flex-col items-start gap-2 cursor-pointer group" onClick={scrollToTop}>
+            <img
+              src="/assets/logo.webp"
+              alt="SmartGap"
+              className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+            <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest block pl-0.5">
+              BY SMARTAN HOUSE
+            </span>
           </div>
 
           {/* Quick Links */}
