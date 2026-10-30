@@ -17,9 +17,18 @@ import {
   HiOutlineUserCircle,
 } from "react-icons/hi2";
 import { useSound } from "./ui/SoundController";
+import usePageSEO from "../hooks/usePageSEO";
 
 export const VerifyCertificatePage = () => {
   const { serial: urlSerial } = useParams();
+
+  usePageSEO({
+    title: urlSerial
+      ? `SmartGap — Verifying Certificate #${urlSerial}`
+      : "SmartGap — Cryptographic Certificate Verification Portal",
+    description: "Verify authentic SmartGap completion credentials, student identity, and proof-of-work badges accredited by Smartan House.",
+    canonical: `https://smartanhouse.org/verify${urlSerial ? `/${urlSerial}` : ""}`,
+  });
   const [serial, setSerial] = useState(urlSerial || "");
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);

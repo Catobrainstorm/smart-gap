@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { name: "Experience", href: "#experience" },
   { name: "Shuri", href: "#shuri" },
   { name: "Pathways", href: "#pathways" },
+  { name: "FAQ", href: "#faq" },
   { name: "Verify", href: "/verify" },
 ];
 
@@ -66,7 +67,7 @@ export const Navbar = ({ onOpenGiftModal }) => {
 
   // Active section observer
   useEffect(() => {
-    const sectionIds = ["philosophy", "experience", "shuri", "pathways"];
+    const sectionIds = ["philosophy", "experience", "shuri", "pathways", "faq"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

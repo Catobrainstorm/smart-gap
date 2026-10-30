@@ -43,6 +43,9 @@ export const Footer = () => {
             <a href="#pathways" className="hover:text-[#FF9600] transition-colors">
               Pathways
             </a>
+            <a href="#faq" className="hover:text-[#FF9600] transition-colors">
+              FAQ
+            </a>
             <Link to="/verify" className="hover:text-[#C4B5FD] transition-colors">
               Verify Certificate
             </Link>

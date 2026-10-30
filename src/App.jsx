@@ -14,6 +14,7 @@ import confetti from "canvas-confetti";
 
 // Smooth Scroll & Audio Systems
 import useLenis from "./hooks/useLenis";
+import usePageSEO from "./hooks/usePageSEO";
 import { SoundProvider, useSound } from "./components/ui/SoundController";
 import ScrollProgress from "./components/ui/ScrollProgress";
 
@@ -28,6 +29,7 @@ import SeeAndFeel from "./components/sections/SeeAndFeel";
 import MeetShuri from "./components/sections/MeetShuri";
 import LearningOutcomes from "./components/sections/LearningOutcomes";
 import Pathways from "./components/sections/Pathways";
+import FaqSection from "./components/sections/FaqSection";
 import FinalCTA from "./components/sections/FinalCTA";
 import Footer from "./components/sections/Footer";
 
@@ -51,6 +53,13 @@ const LandingPage = () => {
   // Initialize Lenis smooth scroll
   useLenis();
   const { playUiSound } = useSound();
+
+  // Primary Landing Page SEO
+  usePageSEO({
+    title: "SmartGap — Design Your Future | Gamified 4-Week Continuum",
+    description: "Reconstruct your mental models, unpack wealth creation, and master modern tools in a 4-week 360° self-empowerment journey.",
+    canonical: "https://smartanhouse.org/",
+  });
 
   const [isPreloaded, setIsPreloaded] = useState(false);
   const [isGiftCardOpen, setIsGiftCardOpen] = useState(false);
@@ -133,6 +142,9 @@ const LandingPage = () => {
         onOpenGiftCard={() => setIsGiftCardOpen(true)}
         onOpenGiftBox={() => setIsGiftBoxOpen(true)}
       />
+
+      {/* Frequently Asked Questions */}
+      <FaqSection onOpenGiftModal={() => setIsGiftCardOpen(true)} />
 
       {/* 3.10 Final CTA */}
       <FinalCTA onOpenGiftModal={() => setIsGiftCardOpen(true)} />

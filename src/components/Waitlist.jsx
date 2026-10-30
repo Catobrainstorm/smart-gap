@@ -4,8 +4,14 @@ import { HiOutlineArrowLeft } from 'react-icons/hi2';
 import { db } from '../firebase'; 
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
+import usePageSEO from '../hooks/usePageSEO';
 
 const Waitlist = () => {
+  usePageSEO({
+    title: 'SmartGap — Join the Waitlist | Early Access',
+    description: 'Secure your spot for the upcoming SmartGap 4-week gamified continuum cohort.',
+    canonical: 'https://smartanhouse.org/waitlist',
+  });
   const [formData, setFormData] = useState({ 
     fullName: '', email: '', whatsapp: '',
     educationalStatus: '', schoolName: '', dateOfBirth: '', referral: '',
