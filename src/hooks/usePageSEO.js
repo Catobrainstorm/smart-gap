@@ -7,7 +7,7 @@ export function usePageSEO({
   title,
   description,
   canonical,
-  ogImage = "https://smartanhouse.org/assets/og-preview.png",
+  ogImage = "https://smartanhouse.org/icons/og-preview.png",
 } = {}) {
   useEffect(() => {
     if (title) {
