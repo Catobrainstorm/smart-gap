@@ -1,7 +1,7 @@
 // src/components/sections/FaqSection.jsx
-// Interactive, high-converting FAQ section for SmartGap.
-// Features dark obsidian aesthetics, ambient orange/amber glows, smooth Framer Motion accordion,
-// category filtering, sound engine integration, and full WCAG accessibility.
+// Ultra-clean, high-converting FAQ section for SmartGap.
+// Features STRICT SOLID FLAT BACKGROUNDS (Zero gradients, zero background overlays, zero blurred ambient glow shapes).
+// Ultra-clean obsidian aesthetics, crisp borders, Framer Motion accordion, sound engine, and full WCAG accessibility.
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,7 +15,6 @@ import {
   HiOutlineCheckBadge,
   HiOutlineCpuChip,
   HiOutlineGift,
-  HiOutlineArrowRight,
   HiOutlineMagnifyingGlass,
   HiOutlineChatBubbleBottomCenterText,
 } from "react-icons/hi2";
@@ -228,28 +227,14 @@ export const FaqSection = ({ onOpenGiftModal }) => {
     <section
       id="faq"
       aria-labelledby="faq-section-heading"
-      className="relative w-full bg-[#0A0A0A] text-white py-[clamp(100px,16vh,200px)] px-6 sm:px-12 select-none overflow-hidden"
+      className="relative w-full bg-[#0A0A0A] text-white py-[clamp(100px,16vh,200px)] px-6 sm:px-12 select-none"
     >
-      {/* Ambient background glows */}
-      <div
-        className="absolute top-1/4 -left-48 w-96 h-96 bg-[#FF9600]/10 rounded-full blur-[120px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#DA5127]/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl h-full pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.03)_0%,transparent_70%)]"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16 relative z-10">
+      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16 text-left">
         {/* --- SECTION HEADER --- */}
-        <div className="space-y-6 text-left max-w-4xl">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF9600]/10 border border-[#FF9600]/30 text-[#FB923C] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(251,146,60,0.15)]">
-            <HiOutlineSparkles className="w-4 h-4 text-[#FF9600] animate-pulse" />
+        <div className="space-y-6 max-w-4xl">
+          {/* Eyebrow Pill (Solid Flat) */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#141414] border border-neutral-800 text-[#FB923C] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest">
+            <HiOutlineSparkles className="w-4 h-4 text-[#FF9600]" />
             <span>Frequently Asked Questions</span>
           </div>
 
@@ -259,18 +244,15 @@ export const FaqSection = ({ onOpenGiftModal }) => {
             className="display-title text-4xl sm:text-6xl lg:text-7xl font-black uppercase text-white tracking-tight leading-[0.92]"
           >
             Everything you need to know about{" "}
-            <span className="text-[#FB923C] drop-shadow-[0_0_25px_rgba(251,146,60,0.35)]">
-              SmartGap
-            </span>
-            .
+            <span className="text-[#FB923C]">SmartGap</span>.
           </h2>
 
-          <p className="font-body text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-light">
+          <p className="font-body text-base sm:text-lg text-neutral-300 max-w-2xl leading-relaxed font-light">
             Clear, transparent answers for prospective learners, ambitious youth, and forward-thinking parents navigating transitions.
           </p>
 
-          {/* Category Filter Pills & Search Input */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-white/10">
+          {/* Category Filter Pills & Search Input (Solid Flat) */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-neutral-800">
             {/* Filter Tabs */}
             <div className="flex flex-wrap items-center gap-2" role="tablist" aria-label="FAQ Categories">
               {CATEGORIES.map((cat) => {
@@ -282,10 +264,10 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => handleCategoryChange(cat)}
-                    className={`px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                    className={`px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider font-semibold transition-colors cursor-pointer ${
                       isActive
-                        ? "bg-[#FF9600] text-[#0A0A0A] shadow-[0_0_20px_rgba(255,150,0,0.4)]"
-                        : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10"
+                        ? "bg-[#FF9600] text-[#0A0A0A]"
+                        : "bg-[#141414] text-neutral-400 hover:text-white hover:bg-[#1C1C1C] border border-neutral-800"
                     }`}
                   >
                     {cat}
@@ -296,20 +278,20 @@ export const FaqSection = ({ onOpenGiftModal }) => {
 
             {/* Quick Keyword Filter */}
             <div className="relative min-w-[220px]">
-              <HiOutlineMagnifyingGlass className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+              <HiOutlineMagnifyingGlass className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search questions..."
                 aria-label="Filter FAQ questions"
-                className="w-full pl-9 pr-4 py-2 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/40 text-xs font-body focus:outline-none focus:border-[#FB923C] focus:ring-1 focus:ring-[#FB923C] transition-all"
+                className="w-full pl-9 pr-4 py-2 rounded-full bg-[#141414] border border-neutral-800 text-white placeholder-neutral-500 text-xs font-body focus:outline-none focus:border-[#FB923C] transition-colors"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs font-mono"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white text-xs font-mono"
                   aria-label="Clear search"
                 >
                   ✕
@@ -319,12 +301,12 @@ export const FaqSection = ({ onOpenGiftModal }) => {
           </div>
         </div>
 
-        {/* --- ACCORDION LIST --- */}
+        {/* --- ACCORDION LIST (Strict Solid Flat Cards) --- */}
         <div className="space-y-4" role="region" aria-label="Frequently Asked Questions Accordion">
           {filteredFaqs.length === 0 ? (
-            <div className="py-16 text-center rounded-3xl bg-[#0C0C0C] border border-white/10 space-y-3">
-              <HiOutlineQuestionMarkCircle className="w-10 h-10 text-white/30 mx-auto" />
-              <p className="font-body text-sm text-white/60">
+            <div className="py-16 text-center rounded-3xl bg-[#0E0E0E] border border-neutral-800 space-y-3">
+              <HiOutlineQuestionMarkCircle className="w-10 h-10 text-neutral-500 mx-auto" />
+              <p className="font-body text-sm text-neutral-400">
                 No matching questions found for "{searchQuery}".
               </p>
               <button
@@ -333,7 +315,7 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                   setSearchQuery("");
                   setActiveCategory("All Questions");
                 }}
-                className="px-4 py-1.5 rounded-full bg-white/10 text-white font-mono text-xs uppercase hover:bg-white/20 transition-all cursor-pointer"
+                className="px-4 py-1.5 rounded-full bg-[#181818] text-white font-mono text-xs uppercase hover:bg-[#222222] border border-neutral-700 transition-colors cursor-pointer"
               >
                 Reset filters
               </button>
@@ -347,10 +329,10 @@ export const FaqSection = ({ onOpenGiftModal }) => {
               return (
                 <div
                   key={faq.id}
-                  className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden ${
+                  className={`rounded-2xl sm:rounded-3xl border transition-colors duration-200 overflow-hidden ${
                     isOpen
-                      ? "bg-[#0E1322] border-[#FB923C]/60 shadow-[0_10px_35px_rgba(251,146,60,0.12)]"
-                      : "bg-[#0C0C0C] border-white/10 hover:border-white/25 hover:bg-[#0f0f0f]"
+                      ? "bg-[#141414] border-[#FB923C]"
+                      : "bg-[#0E0E0E] border-neutral-800 hover:border-neutral-700 hover:bg-[#121212]"
                   }`}
                 >
                   {/* Accordion Trigger Button */}
@@ -363,20 +345,20 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                     className="w-full text-left p-6 sm:p-8 flex items-start sm:items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB923C]"
                   >
                     <div className="flex items-start sm:items-center gap-4 sm:gap-6 flex-1 min-w-0">
-                      {/* Numeric Index + Glowing Icon Pill */}
+                      {/* Numeric Index + Solid Flat Icon Pill */}
                       <div className="flex items-center gap-3 shrink-0">
                         <span
                           className={`font-mono text-xs sm:text-sm font-bold tracking-widest transition-colors ${
-                            isOpen ? "text-[#FB923C]" : "text-white/40"
+                            isOpen ? "text-[#FB923C]" : "text-neutral-500"
                           }`}
                         >
                           {questionNumber}
                         </span>
                         <div
-                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center border transition-all ${
+                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center border transition-colors ${
                             isOpen
-                              ? "bg-[#FF9600]/20 border-[#FF9600]/50 text-[#FF9600]"
-                              : "bg-white/5 border-white/10 text-white/60"
+                              ? "bg-[#1F1710] border-[#FB923C]/60 text-[#FB923C]"
+                              : "bg-[#161616] border-neutral-800 text-neutral-400"
                           }`}
                         >
                           <IconComponent className="w-5 h-5" />
@@ -389,14 +371,14 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-[#FB923C] font-semibold">
                             {faq.categoryLabel}
                           </span>
-                          <span className="w-1 h-1 rounded-full bg-white/20 hidden sm:inline-block" />
-                          <span className="font-mono text-[10px] text-white/40 uppercase tracking-widest hidden sm:inline-block">
+                          <span className="w-1 h-1 rounded-full bg-neutral-600 hidden sm:inline-block" />
+                          <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest hidden sm:inline-block">
                             {faq.badge}
                           </span>
                         </div>
                         <h3
                           className={`font-body text-base sm:text-xl font-bold tracking-tight transition-colors pr-2 ${
-                            isOpen ? "text-white" : "text-white/90 hover:text-white"
+                            isOpen ? "text-white" : "text-neutral-200 hover:text-white"
                           }`}
                         >
                           {faq.question}
@@ -404,18 +386,18 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                       </div>
                     </div>
 
-                    {/* Custom Expanding +/- Icon Toggle */}
+                    {/* Custom Expanding +/- Icon Toggle (Solid Flat) */}
                     <div
                       aria-hidden="true"
                       className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center border shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? "border-[#FB923C] bg-[#FB923C]/20 text-[#FB923C] rotate-180"
-                          : "border-white/15 bg-white/5 text-white/70 hover:border-white/30"
+                          ? "border-[#FB923C] bg-[#1F1710] text-[#FB923C] rotate-180"
+                          : "border-neutral-800 bg-[#161616] text-neutral-400 hover:border-neutral-700"
                       }`}
                     >
                       {/* Horizontal bar */}
                       <span className="w-3.5 sm:w-4 h-0.5 bg-current rounded-full" />
-                      {/* Vertical bar (scales away when open) */}
+                      {/* Vertical bar */}
                       <span
                         className={`absolute w-0.5 h-3.5 sm:h-4 bg-current rounded-full transition-transform duration-300 ${
                           isOpen ? "rotate-90 scale-0" : "rotate-0 scale-100"
@@ -437,26 +419,26 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-0 border-t border-white/10 space-y-6">
-                          {/* Short Answer Callout Box */}
-                          <div className="mt-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
-                            <span className="inline-block mt-0.5 w-2 h-2 rounded-full bg-[#FB923C] shrink-0 shadow-[0_0_8px_#FB923C]" />
-                            <p className="font-body text-sm sm:text-base text-white/95 leading-relaxed font-medium">
+                        <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-0 border-t border-neutral-800 space-y-6">
+                          {/* Short Answer Callout Box (Solid Flat) */}
+                          <div className="mt-4 p-4 sm:p-5 rounded-2xl bg-[#121212] border border-neutral-800 flex items-start gap-3">
+                            <span className="inline-block mt-1 w-2 h-2 rounded-full bg-[#FB923C] shrink-0" />
+                            <p className="font-body text-sm sm:text-base text-white leading-relaxed font-medium">
                               {faq.shortAnswer}
                             </p>
                           </div>
 
                           {/* Full Elaborated Narrative */}
-                          <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed font-light">
+                          <p className="font-body text-sm sm:text-base text-neutral-300 leading-relaxed font-light">
                             {faq.fullDescription}
                           </p>
 
-                          {/* 3 Key Takeaway Columns */}
+                          {/* 3 Key Takeaway Columns (Solid Flat) */}
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
                             {faq.keyPillars.map((pillar, pIdx) => (
                               <div
                                 key={pIdx}
-                                className="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1.5 hover:border-white/20 transition-all"
+                                className="p-4 rounded-xl bg-[#0E0E0E] border border-neutral-800 space-y-1.5"
                               >
                                 <div className="flex items-center gap-2">
                                   <span className="w-1.5 h-1.5 rounded-full bg-[#FF9600]" />
@@ -464,7 +446,7 @@ export const FaqSection = ({ onOpenGiftModal }) => {
                                     {pillar.title}
                                   </h4>
                                 </div>
-                                <p className="font-body text-xs text-white/70 leading-relaxed font-light">
+                                <p className="font-body text-xs text-neutral-400 leading-relaxed font-light">
                                   {pillar.desc}
                                 </p>
                               </div>
@@ -480,14 +462,8 @@ export const FaqSection = ({ onOpenGiftModal }) => {
           )}
         </div>
 
-        {/* --- BOTTOM ADMISSIONS & SUPPORT CARD --- */}
-        <div className="p-8 sm:p-10 rounded-[32px] bg-gradient-to-br from-[#0E1322] to-[#0A0A0A] border border-white/12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden shadow-2xl">
-          {/* Subtle decorative glow */}
-          <div
-            className="absolute -top-12 -right-12 w-48 h-48 bg-[#FF9600]/15 rounded-full blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
-
+        {/* --- BOTTOM ADMISSIONS & SUPPORT CARD (Solid Flat) --- */}
+        <div className="p-8 sm:p-10 rounded-[32px] bg-[#0E0E0E] border border-neutral-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <div className="flex items-center gap-2 text-[#FB923C] font-mono text-xs uppercase tracking-wider font-bold">
               <HiOutlineChatBubbleBottomCenterText className="w-4 h-4" />
@@ -496,7 +472,7 @@ export const FaqSection = ({ onOpenGiftModal }) => {
             <h4 className="display-title text-2xl sm:text-3xl text-white font-black uppercase">
               Ready to map your gap year continuum?
             </h4>
-            <p className="font-body text-sm text-white/70 leading-relaxed font-light">
+            <p className="font-body text-sm text-neutral-400 leading-relaxed font-light">
               Join the waitlist to secure cohort admission, or gift an experience pass to a young mind preparing for the future.
             </p>
           </div>
@@ -505,7 +481,7 @@ export const FaqSection = ({ onOpenGiftModal }) => {
             <button
               type="button"
               onClick={() => navigate("/waitlist")}
-              className="flex-1 md:flex-none px-6 py-3.5 rounded-full bg-[#FF9600] hover:bg-[#FB923C] text-black font-body text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_20px_rgba(255,150,0,0.3)] active:scale-95"
+              className="flex-1 md:flex-none px-6 py-3.5 rounded-full bg-[#FF9600] hover:bg-[#FB923C] text-black font-body text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-95"
             >
               <span>Join waitlist</span>
               <TiLocationArrow className="w-4 h-4 text-black -rotate-45" />
@@ -515,7 +491,7 @@ export const FaqSection = ({ onOpenGiftModal }) => {
               <button
                 type="button"
                 onClick={onOpenGiftModal}
-                className="flex-1 md:flex-none px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-body text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer backdrop-blur-sm active:scale-95"
+                className="flex-1 md:flex-none px-6 py-3.5 rounded-full bg-[#181818] hover:bg-[#202020] border border-neutral-700 text-white font-body text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-95"
               >
                 <HiOutlineGift className="w-4 h-4 text-white" />
                 <span>Get a gift card</span>
@@ -529,4 +505,3 @@ export const FaqSection = ({ onOpenGiftModal }) => {
 };
 
 export default FaqSection;
-

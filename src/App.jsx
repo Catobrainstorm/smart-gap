@@ -56,8 +56,8 @@ const LandingPage = () => {
 
   // Primary Landing Page SEO
   usePageSEO({
-    title: "SmartGap — Design Your Future | Gamified 4-Week Continuum",
-    description: "Reconstruct your mental models, unpack wealth creation, and master modern tools in a 4-week 360° self-empowerment journey.",
+    title: "SmartGap — 4-Week Gamified Self-Empowerment Continuum",
+    description: "SmartGap is a 4-week gamified self-empowerment journey giving young people clarity, modern skills, and direction. Complete quests, build verified proof-of-work, and level up.",
     canonical: "https://smartanhouse.org/",
   });
 
